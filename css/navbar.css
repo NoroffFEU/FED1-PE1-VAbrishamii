@@ -1,0 +1,27 @@
+.header{
+    margin: 10px;
+    background-color: var(--white);
+}
+.logo{
+    width: 7.3vw;
+   
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+
+}
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-item{
+    margin: 2rem;
+    font-size: 2rem;
+}
+.icon{
+    margin: 2rem;
+    font-size: 2rem;
+   
+}
