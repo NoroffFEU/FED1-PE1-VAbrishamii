@@ -11,11 +11,22 @@ const navbarDiv = document.createElement("div");
 navbarDiv.classList.add("navbar");
 const ulMenu = document.createElement("ul");
 ulMenu.classList.add("menu");
-["Home", "About", "Contact Us"].forEach((text) => {
-  const li = document.createElement("li");
-  li.classList.add("menu-item");
-  li.textContent = text;
-  ulMenu.appendChild(li);
+["Home", "About", "Contact Us"].forEach((text, index) => {
+  const link = document.createElement("a");
+    link.textContent = text;
+
+    if (index === 0) {
+        link.href = "index.html"; 
+    } else if (index === 1) {
+        link.href = "about.html"; 
+    } else if (index === 2) {
+        link.href = "contact.html"; 
+    }
+
+    const li = document.createElement("li");
+    li.classList.add("menu-item");
+    li.appendChild(link);
+    ulMenu.appendChild(li);
 });
 navbarDiv.appendChild(ulMenu);
 navDiv.appendChild(navbarDiv);
