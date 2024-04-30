@@ -36,8 +36,12 @@ a{
 .btn{
   background-color: var(--black);
   color: var(--white);
-
   border-radius: 30px;
   padding: 10px;
   font-size: 2rem;
+  cursor: pointer;
+}
+.btn:hover{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+  transition: box-shadow 0.3s; 
 }

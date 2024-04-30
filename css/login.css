@@ -1,14 +1,18 @@
+
+body{
+    background-color: var(--light-gray);
+}
 #container {
-  background-color: var(--light-gray);
-  width: 90%;
+  background-color: var(--white);
+  width: 50%;
   height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
-  border-radius: 30px;
-  margin: auto;
-  margin-top: 10rem;
+  border-radius: 80px;
+  margin: 5rem auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
 
@@ -23,13 +27,39 @@
 }
 .login-form input{
     width: 20vw;
-    border: none;
+    border: 2px solid black;
     padding: 20px;
     margin: 15px;
     border-radius: 30px;
 
 }
-.sign-in{
+.login-form button{
+    width: 15vw;
+    margin: 2rem auto;
+    
+}
+.sign-in-link{
     font-size: 1.5rem;
     color: var(--dark-blue);
+    cursor: pointer;
+}
+.sign-in{
+    font-size: 1.5rem;
+}
+.admin-txt{
+    font-size: 1.5rem;
+}
+.admin-btn{
+    color: var(--white) ;
+    background-color: var(--dark-blue) ;
+    border: none;
+    width: 10vw;
+    padding: 20px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.admin-btn:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s; 
 }

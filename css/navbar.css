@@ -19,6 +19,7 @@
 .menu-item{
     margin: 2.5rem;
     font-size: 2rem;
+    cursor: pointer;
 }
 .icon{
     font-size: 2rem;
@@ -31,6 +32,7 @@
 }
 .icon-item li{
     margin: 0 15px;
+    cursor: pointer;
 }
 .icon-item li:last-child{
     display: none;

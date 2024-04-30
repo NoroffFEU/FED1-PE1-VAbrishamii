@@ -13,31 +13,40 @@ loginForm.innerHTML = `
 
 // Add event listener to handle form submission
 loginForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission behavior
-    // Your login logic here
+    event.preventDefault(); 
+
     const formData = new FormData(loginForm);
     const username = formData.get('username');
     const password = formData.get('password');
     console.log('Username:', username);
     console.log('Password:', password);
-    // After handling login logic, you can redirect the user to another page or perform other actions
 });
 
+// create sign up section
 const signInText = document.createElement('p');
-signInText.classList.add('sign-in')
-signInText.textContent = "If your not a member Click here to sign in";
+signInText.classList.add('sign-in');
+signInText.textContent = "If you're not a member click here to ";
+const signInLink = document.createElement('span');
+signInLink.classList.add('sign-in-link');
+signInLink.textContent = "Sign Up";
+signInText.appendChild(signInLink);
 
-signInText.addEventListener('click', function() {
-    window.location.href = "register.html"; // Replace with the URL of your sign-in page
+signInLink.addEventListener('click', function() {
+    window.location.href = "register.html"; 
 });
 
+// create admin section
 const adminText = document.createElement('p');
 adminText.classList.add('admin-txt');
 adminText.textContent ='This part only use by admin';
 
 const adminButton =document.createElement('button')
-adminButton.classList.add('btn');
+adminButton.classList.add('admin-btn');
 adminButton.textContent = 'Admin Login';
+
+adminButton.addEventListener('click', function() {
+    window.location.href = '../post/admin-login.html'
+})
 
 // Append logo and login form to the container
 const container = document.getElementById('container');
