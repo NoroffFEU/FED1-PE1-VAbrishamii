@@ -29,3 +29,15 @@ a{
   color: var(--black);
 }
 
+.logo{
+  width: 7.3vw;
+  margin: 2rem;
+}
+.btn{
+  background-color: var(--black);
+  color: var(--white);
+
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 2rem;
+}

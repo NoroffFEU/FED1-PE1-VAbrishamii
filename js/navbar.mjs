@@ -1,8 +1,9 @@
+import { createLogo } from "./utils.mjs";
+
 const mainContent = document.createElement("div");
 mainContent.classList.add("header");
 
-const logo = document.createElement("div");
-logo.innerHTML = "<img src='asset/images/logo.png' alt='Trip' class='logo'>"; 
+const logo = createLogo('./asset/images/logo.png', 'Trip', 'logo');
 mainContent.appendChild(logo);
 
 // Create the menu
@@ -68,3 +69,9 @@ mainContent.appendChild(iconDiv);
 
 const container = document.getElementById("container");
 container.appendChild(mainContent);
+
+
+function LoginPgae() {
+   window.location.href = "account/login.html";
+}
+userIcon.addEventListener('click', LoginPgae);

@@ -1,0 +1,35 @@
+#container {
+  background-color: var(--light-gray);
+  width: 90%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 30px;
+  margin: auto;
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+
+}
+.logo{
+    border-radius: 50%;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    
+}
+.login-form input{
+    width: 20vw;
+    border: none;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 30px;
+
+}
+.sign-in{
+    font-size: 1.5rem;
+    color: var(--dark-blue);
+}
