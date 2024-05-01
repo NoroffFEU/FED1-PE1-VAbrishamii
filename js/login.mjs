@@ -1,11 +1,8 @@
-import { createLogo } from "./utils.mjs";
-
-const logo = createLogo('../asset/images/logo.png', 'Trip', 'logo');
-
 // Create login form elements
 const loginForm = document.createElement('form');
 loginForm.classList.add('login-form')
 loginForm.innerHTML = `
+    <i class="fa-solid fa-user-tie admin-icon"></i>
     <input type="text" name="username" placeholder="Username">
     <input type="password" name="password" placeholder="Password">
     <button type="submit" class='btn'>Login</button>
@@ -35,24 +32,12 @@ signInLink.addEventListener('click', function() {
     window.location.href = "register.html"; 
 });
 
-// create admin section
-const adminText = document.createElement('p');
-adminText.classList.add('admin-txt');
-adminText.textContent ='This part only use by admin';
-
-const adminButton =document.createElement('button')
-adminButton.classList.add('admin-btn');
-adminButton.textContent = 'Admin Login';
-
-adminButton.addEventListener('click', function() {
-    window.location.href = '../post/admin-login.html'
-})
-
 // Append logo and login form to the container
 const container = document.getElementById('container');
-container.appendChild(logo);
+
+
 container.appendChild(loginForm);
 container.appendChild(signInText);
-container.appendChild(adminText);
-container.appendChild(adminButton);
+
+
 
