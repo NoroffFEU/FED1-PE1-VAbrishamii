@@ -1,3 +1,5 @@
+import { postData } from "./api.mjs";
+
 // Create login form elements
 const loginForm = document.createElement('form');
 loginForm.classList.add('login-form')
@@ -9,12 +11,20 @@ loginForm.innerHTML = `
 `;
 
 // Add event listener to handle form submission
-loginForm.addEventListener('submit', function(event) {
+loginForm.addEventListener('submit', async function(event) {
     event.preventDefault(); 
 
     const formData = new FormData(loginForm);
     const username = formData.get('username');
     const password = formData.get('password');
+    try{
+        const response = await postData('/auth/login', {username, password});
+        localStorage.setItem('token', token);
+        window.localStorage.href = '../post/index.html';
+    }
+    catch{
+        alert('An Error Occurd! Please try again')
+    }
     console.log('Username:', username);
     console.log('Password:', password);
 });
@@ -34,8 +44,6 @@ signInLink.addEventListener('click', function() {
 
 // Append logo and login form to the container
 const container = document.getElementById('container');
-
-
 container.appendChild(loginForm);
 container.appendChild(signInText);
 
