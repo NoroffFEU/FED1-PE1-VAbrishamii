@@ -14,16 +14,20 @@ loginForm.innerHTML = `
 
 // Function to perform login
 export async function loginUser(email, password) {
-    const loginData = {
+    let loginData = {
         email: "vabri2023@stud.noroff.no",
         password: "Avnoroff23"
     };
 
+    let userData = JSON.parse(localStorage.getItem("userData"));
+    let accessToken = userData ? userData.accessToken : '';
     const url = `${Base_URL}${Auth_endpoint.LOGIN}`;
+
     const options = {
         method: "POST",
         headers: {
             'Content-Type': 'application/json', 
+             Authorization: "Bearer " + accessToken,
         },
         body: JSON.stringify(loginData)
     };
@@ -31,6 +35,9 @@ export async function loginUser(email, password) {
     try {
         console.log("Fetching URL:", url);
         console.log("Options:", options);
+        // if (userData){
+        //     accessToken = userData.accessToken
+        // }
 
         const response = await fetch(url, options);
         console.log("Response:", response);
@@ -59,39 +66,6 @@ export async function loginUser(email, password) {
 }
 
 
-// // Function to perform login
-// export async function loginUser(email, password) {
-//     const loginData = {
-//         email: "vabri2023@stud.noroff.no",
-//         password: "Avnoroff23"
-//     };
-
-//     const url = `${Base_URL}${Auth_endpoint.LOGIN}`;
-//     const options = {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(loginData)
-//     };
-
-//     try {
-//         const response = await fetch(url, options);
-//         if (!response.ok) {
-//             throw new Error('Login failed');
-//         }
-//         const responseData = await response.json();
-//         const token = responseData.data.accessToken;
-//         if (!token) {
-//             throw new Error('Access token not found in response');
-//         }
-//         return token;
-//     } catch (error) {
-//         throw new Error('Login failed');
-//     }
-// }
-
-
 // Add event listener to handle form submission
 loginForm.addEventListener('submit', async function (event) {
     event.preventDefault();
@@ -105,7 +79,8 @@ loginForm.addEventListener('submit', async function (event) {
         console.log('Username:', username);
         console.log('Password:', password);
         localStorage.setItem('token', token);
-        window.location.href = '../post/index.html';
+        console.log(token)
+        // window.location.href = '../post/index.html';
     } catch (error) {
         // console.error('Login failed:', error);
         alert('An Error Occurred! Please try again');
