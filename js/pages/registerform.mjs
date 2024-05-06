@@ -1,6 +1,7 @@
 import { createLogo } from "../modules/logo.mjs";
 
-document.addEventListener("DOMContentLoaded", function () {
+  export async function register(){
+
   const container = document.getElementById("container");
   const logo = createLogo("../asset/images/logo.png", "Trip", "logo");
   container.appendChild(logo);
@@ -17,8 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Append form and message to signup container
   signupContainer.appendChild(signupForm);
   signupContainer.appendChild(signupMessage);
-
-  // Append signup container to main container
   container.appendChild(signupContainer);
 
   // Function to create form elements
@@ -43,35 +42,35 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Create form elements for name, last name, email, password, and confirmation password
-  createFormElement("text", "first-name", "Name *");
-  createFormElement("text", "last-name", "Last Name *");
+  createFormElement("text", "name", "Name *");
+  // createFormElement("text", "last-name", "Last Name *");
   createFormElement("email", "email", "Email *");
   createFormElement("password", "password", "Password *");
-  createFormElement("password", "confirm-password", "Confirm Password *");
+  // createFormElement("password", "confirm-password", "Confirm Password *");
 
   // Create submit button
   const submitButton = document.createElement("button");
   submitButton.classList.add("btn", "signup-btn");
   submitButton.type = "submit";
-  submitButton.textContent = "Sign Up";
+  submitButton.textContent = "Register";
   signupForm.appendChild(submitButton);
 
-  // Event listener for form submission
-  signupForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+  // //vent listener for form submission
+  // signupForm.addEventListener("submit", function (event) {
+  //   event.preventDefault();
 
-    const firstName = signupForm.elements["first-name"].value;
-    const lastName = signupForm.elements["last-name"].value;
-    const email = signupForm.elements.email.value;
-    const password = signupForm.elements.password.value;
-    const confirmPassword = signupForm.elements["confirm-password"].value;
+  //   const firstName = signupForm.elements["first-name"].value;
+  //   const lastName = signupForm.elements["last-name"].value;
+  //   const email = signupForm.elements.email.value;
+  //   const password = signupForm.elements.password.value;
+  //   const confirmPassword = signupForm.elements["confirm-password"].value;
 
-    // Perform validation (e.g., check if passwords match)
-    if (password !== confirmPassword) {
-      signupMessage.textContent = "Passwords do not match!";
-    } else {
-      // You can perform further processing here, like sending the data to a server
-      signupMessage.textContent = `Signing up ${firstName} ${lastName} with email: ${email}`;
-    }
-  });
-});
+  //   // Perform validation (e.g., check if passwords match)
+  //   if (password !== confirmPassword) {
+  //     signupMessage.textContent = "Passwords do not match!";
+  //   } else {
+  //     // You can perform further processing here, like sending the data to a server
+  //     signupMessage.textContent = `Signing up ${firstName} ${lastName} with email: ${email}`;
+  //   }
+  // });
+}

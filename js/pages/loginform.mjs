@@ -1,5 +1,5 @@
 export function createLoginForm(){
-    // Create login form elements
+    
 const loginForm = document.createElement('form');
 loginForm.classList.add('login-form')
 loginForm.innerHTML = `

@@ -70,8 +70,8 @@ mainContent.appendChild(iconDiv);
 const container = document.getElementById("container");
 container.appendChild(mainContent);
 
-// function LoginPgae() {
-//   window.location.href = "account/login.html";
-// }
-// userIcon.addEventListener("click", LoginPgae);
+function LoginPgae() {
+  window.location.href = "account/login.html";
+}
+userIcon.addEventListener("click", LoginPgae);
 
