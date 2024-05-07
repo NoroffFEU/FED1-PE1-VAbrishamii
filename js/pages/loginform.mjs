@@ -6,21 +6,18 @@ loginForm.innerHTML = `
     <i class="fa-solid fa-user-tie admin-icon"></i>
     <input type="text" name="username" placeholder="Username">
     <input type="password" name="password" placeholder="Password">
-    <button type="submit" class='btn'>Login</button>
+    <button type="submit" class='btn' id="loginBtn">Login</button>
+    <button type="text" class='btn-account' id='createAccountBtn'>Register</button>
+
 `;
 
-const signInText = document.createElement('p');
-signInText.classList.add('sign-in');
-signInText.textContent = "If you're not a member click here to ";
-
-const signInLink = document.createElement('span');
-signInLink.classList.add('sign-in-link');
-signInLink.textContent = "Sign Up";
-signInText.appendChild(signInLink);
-
-signInLink.addEventListener('click', function() {
-    window.location.href = "register.html"; 
+const createAccountBtn = loginForm.querySelector('#createAccountBtn');
+createAccountBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    window.location.href = 'register.html';
 });
-loginForm.appendChild(signInText);
-return loginForm
+const container = document.getElementById('container');
+container.appendChild(loginForm);
+return loginForm;
 }
+
