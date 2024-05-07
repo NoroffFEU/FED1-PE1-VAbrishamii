@@ -1,0 +1,22 @@
+#footer{
+    display: flex;
+    background-color: var(--white);
+    justify-content: space-around;
+    align-items: center;
+    max-width: 100%;
+
+}
+.icon{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+.icon-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-item li{
+    margin: 0 15px;
+    cursor: pointer;
+}
