@@ -1,5 +1,4 @@
 .header{
-
     background-color: var(--white);
     display: flex;
     justify-content: space-between;
@@ -11,18 +10,8 @@
     margin: 2rem;
 }
 
-.menu{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.menu-item{
-    margin: 2.5rem;
-    font-size: 2rem;
-    cursor: pointer;
-}
 .icon{
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: flex;
 }
 .icon-item{
@@ -34,15 +23,14 @@
     margin: 0 15px;
     cursor: pointer;
 }
-.icon-item li:last-child{
-    display: none;
-}
 @media (max-width: 768px) {
-    .icon-item li:last-child{
-        display: flex;
+    .logo{
+        width: 10vw;
     }
-    .menu{
-        display: none;
+    .icon{
+        font-size: 1rem;
     }
- 
+    .icon-item li{
+        margin: 0 8px;
+    }
 }

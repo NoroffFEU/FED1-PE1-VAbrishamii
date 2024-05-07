@@ -45,3 +45,8 @@ a{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
   transition: box-shadow 0.3s; 
 }
+@media (max-width: 768px) {
+  .btn{
+    width: 20px;
+  }
+}

@@ -6,32 +6,6 @@ mainContent.classList.add("header");
 const logo = createLogo("./asset/images/logo.png", "Trip", "logo");
 mainContent.appendChild(logo);
 
-// Create the menu
-const navDiv = document.createElement("nav");
-const navbarDiv = document.createElement("div");
-navbarDiv.classList.add("navbar");
-const ulMenu = document.createElement("ul");
-ulMenu.classList.add("menu");
-["Home", "About", "Contact Us"].forEach((text, index) => {
-  const link = document.createElement("a");
-  link.textContent = text;
-
-  if (index === 0) {
-    link.href = "index.html";
-  } else if (index === 1) {
-    link.href = "about.html";
-  } else if (index === 2) {
-    link.href = "contact.html";
-  }
-
-  const li = document.createElement("li");
-  li.classList.add("menu-item");
-  li.appendChild(link);
-  ulMenu.appendChild(li);
-});
-navbarDiv.appendChild(ulMenu);
-navDiv.appendChild(navbarDiv);
-
 // Create the icons
 const iconDiv = document.createElement("div");
 iconDiv.classList.add("icon");
@@ -39,39 +13,42 @@ iconDiv.classList.add("icon");
 const iconList = document.createElement("ul");
 iconList.classList.add("icon-item");
 
-const magnifyingGlassIcon = document.createElement("li");
-const magnifyingGlassIconContent = document.createElement("i");
-magnifyingGlassIconContent.classList.add("fa-solid", "fa-magnifying-glass");
-magnifyingGlassIcon.appendChild(magnifyingGlassIconContent);
+const homeIcon = document.createElement("li");
+const homeIconContent = document.createElement("i");
+homeIconContent.classList.add("fa-solid", "fa-house");
+homeIcon.appendChild(homeIconContent);
 
 const userIcon = document.createElement("li");
 const userIconContent = document.createElement("i");
 userIconContent.classList.add("fa-solid", "fa-user");
 userIcon.appendChild(userIconContent);
 
-const barsIcon = document.createElement("li");
-const barsIconContent = document.createElement("i");
-barsIconContent.classList.add("fa-solid", "fa-bars", "burger");
-barsIcon.appendChild(barsIconContent);
+const searchIcon = document.createElement("li");
+const searchIconContent = document.createElement("i");
+searchIconContent.classList.add("fa-solid" , "fa-magnifying-glass");
+searchIcon.appendChild(searchIconContent);
+
+
 
 // Append icons to each other and to the document
-magnifyingGlassIcon.appendChild(magnifyingGlassIconContent);
+homeIcon.appendChild(homeIconContent);
 userIcon.appendChild(userIconContent);
-barsIcon.appendChild(barsIconContent);
+searchIcon.appendChild(searchIconContent);
 
-iconList.appendChild(magnifyingGlassIcon);
+
+iconList.appendChild(homeIcon);
 iconList.appendChild(userIcon);
-iconList.appendChild(barsIcon);
+iconList.appendChild(searchIcon);
 iconDiv.appendChild(iconList);
 
-mainContent.appendChild(navDiv);
 mainContent.appendChild(iconDiv);
 
 const container = document.getElementById("container");
 container.appendChild(mainContent);
 
-function LoginPgae() {
+function LoginPage() {
   window.location.href = "./account/login.html";
 }
-userIcon.addEventListener("click", LoginPgae);
+
+userIcon.addEventListener("click", LoginPage);
 
