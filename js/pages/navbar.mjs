@@ -1,5 +1,9 @@
 import { createLogo } from "../modules/logo.mjs";
 
+export function createNavbar(containerId){
+  const container = document.getElementById(containerId);
+
+
 const mainContent = document.createElement("div");
 mainContent.classList.add("header");
 
@@ -42,9 +46,8 @@ iconList.appendChild(searchIcon);
 iconDiv.appendChild(iconList);
 
 mainContent.appendChild(iconDiv);
-
-const container = document.getElementById("container");
 container.appendChild(mainContent);
+
 
 function LoginPage() {
   window.location.href = "./account/login.html";
@@ -52,3 +55,4 @@ function LoginPage() {
 
 userIcon.addEventListener("click", LoginPage);
 
+}
