@@ -41,6 +41,16 @@ signupForm.addEventListener('submit', async function(event){
         return;
     }
 
+    // const users = JSON.parse(localStorage.getItem('users')) || [];
+    // const userExists = users.some(user => user.email === email);
+
+    // if (userExists) {
+    //         alert('User with the provided username or email already exists. Please choose a different username or email.');
+    //         return;
+    //     }
+
+
+
     const url = `${Base_URL}${Auth_endpoint.REGISTER}`;
     const options = {
             method: 'POST',
@@ -56,15 +66,26 @@ signupForm.addEventListener('submit', async function(event){
             console.log(response);
 
         if (!response.ok) {
+            if (response.status === 400) {
+                alert('A user with the provided email already exists. Please use a different email address.');
+            } else {
+                throw new Error('Failed to register');
          
             throw new Error('Failed to register');
+            }
+
         }
         
         const responseData = await response.json();
         console.log("Response Data:", responseData);
+        window.location.href = './login.html'
     } catch (error) {
-        console.error('Registration failed:', error);
-        alert('Registration failed. Please try again later.');
+        if (error.message.includes('email')) {
+            alert('A user with the provided email already exists. Please use a different email address.');
+        } else {
+            console.error('Registration failed:', error);
+            alert('Registration failed. Please try again later.');
     }
+}
 })
 })

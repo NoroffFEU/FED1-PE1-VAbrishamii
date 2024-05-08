@@ -7,7 +7,7 @@ export function createNavbar(containerId){
 const mainContent = document.createElement("div");
 mainContent.classList.add("header");
 
-const logo = createLogo("./asset/images/logo.png", "Trip", "logo");
+const logo = createLogo("../asset/images/logo.png", "Trip", "logo");
 mainContent.appendChild(logo);
 
 // Create the icons

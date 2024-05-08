@@ -6,12 +6,9 @@ import { Auth_endpoint, Base_URL } from "./api.mjs";
 // Function to perform login
 export async function loginUser(email, password) {
     let loginData = {
-        email: "vabri2023@stud.noroff.no",
-        password: "Avnoroff23"
+        email: email,
+        password: password
     };
-    if (email !== loginData.email || password !== loginData.password){
-        throw new Error('Invalid Username and password');
-    }
 
     let userData = JSON.parse(localStorage.getItem("userData"));
     let accessToken = userData ? userData.accessToken : '';
@@ -33,7 +30,7 @@ export async function loginUser(email, password) {
 
         if (!response.ok) {
             console.log("Login failed:", response.status);
-            throw new Error('Login failed');
+            throw new Error('Invalid username and password');
         }
 
         const responseData = await response.json();
@@ -70,7 +67,7 @@ loginForm.addEventListener('submit', async function (event) {
         console.log('Password:', password);
         localStorage.setItem('token', token);
         console.log(token)
-        window.location.href = '../post/index.html';
+        window.location.href = '../index.html';
     } catch (error) {
         alert('Invalid usernam and password! Please try again.');
     }
