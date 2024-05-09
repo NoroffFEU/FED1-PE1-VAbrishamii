@@ -41,16 +41,6 @@ signupForm.addEventListener('submit', async function(event){
         return;
     }
 
-    // const users = JSON.parse(localStorage.getItem('users')) || [];
-    // const userExists = users.some(user => user.email === email);
-
-    // if (userExists) {
-    //         alert('User with the provided username or email already exists. Please choose a different username or email.');
-    //         return;
-    //     }
-
-
-
     const url = `${Base_URL}${Auth_endpoint.REGISTER}`;
     const options = {
             method: 'POST',
@@ -71,7 +61,6 @@ signupForm.addEventListener('submit', async function(event){
             } else {
                 throw new Error('Failed to register');
          
-            throw new Error('Failed to register');
             }
 
         }

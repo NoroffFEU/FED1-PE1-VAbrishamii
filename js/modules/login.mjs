@@ -1,5 +1,6 @@
 
 // import { createLoginForm } from "../pages/loginform.mjs";
+import { response } from "express";
 import { createLoginForm } from "../Pages/loginform.mjs";
 import { Auth_endpoint, Base_URL } from "./api.mjs";
 
@@ -36,6 +37,8 @@ export async function loginUser(email, password) {
         const responseData = await response.json();
         console.log("Response Data:", responseData);
 
+        // localStorage.setItem('userInfo',JSON.stringify((responseData)));
+
         const token = responseData.data.accessToken;
         if (!token) {
             console.log("Login failed: Access token not found in response");
@@ -66,8 +69,9 @@ loginForm.addEventListener('submit', async function (event) {
         console.log('Username:', username);
         console.log('Password:', password);
         localStorage.setItem('token', token);
+        
         console.log(token)
-        window.location.href = '../index.html';
+        // window.location.href = '../index.html';
     } catch (error) {
         alert('Invalid usernam and password! Please try again.');
     }

@@ -7,7 +7,7 @@ export const Auth_endpoint = {
 };
 
 export const Blog_endpoint ={
-    POSTS_BY_USER: (name) => `blog/posts/${name}`,
+    POST_BY_USER: (name) => `blog/posts/${name}`,
     POST_BY_ID: (name, id) => `blog/posts/${name}/${id}`,
 
 };

@@ -10,6 +10,23 @@ mainContent.classList.add("header");
 const logo = createLogo("../asset/images/logo.png", "Trip", "logo");
 mainContent.appendChild(logo);
 
+// Create tabs for Add Post and Edit Post
+const menu = document.createElement("div");
+menu.classList.add("tab-container");
+
+const addPostTab = document.createElement("div");
+addPostTab.classList.add("tab");
+addPostTab.textContent = "Add Post";
+
+const editPostTab = document.createElement("div");
+editPostTab.classList.add("tab");
+editPostTab.textContent = "Edit Post";
+
+menu.appendChild(addPostTab);
+menu.appendChild(editPostTab);
+
+mainContent.appendChild(menu);
+
 // Create the icons
 const iconDiv = document.createElement("div");
 iconDiv.classList.add("icon");
@@ -50,9 +67,20 @@ container.appendChild(mainContent);
 
 
 function LoginPage() {
-  window.location.href = "./account/login.html";
+  window.location.href = "../account/login.html";
 }
 
 userIcon.addEventListener("click", LoginPage);
 
+function addPost(){
+  window.location.href = "./post/index.html";
 }
+addPostTab.addEventListener('click', addPost);
+
+function editPost(){
+  window.location.href = "./post/edit.html";
+}
+editPostTab.addEventListener('click', editPost);
+
+}
+

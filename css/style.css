@@ -40,6 +40,7 @@ a{
   padding: 10px;
   font-size: 2rem;
   cursor: pointer;
+  /* width: 50%; */
 }
 .btn:hover{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
