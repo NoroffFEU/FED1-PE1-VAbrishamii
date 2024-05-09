@@ -6,6 +6,20 @@ createNavbar('container');
 // Function to create the blog post form
 const createBlogForm = () => {
     const main = document.querySelector("main");
+
+    // Get user information from local storage
+    const userInfoString = localStorage.getItem("userInfo");
+    const userInfo = JSON.parse(userInfoString);
+
+    // If user information is not available, display an alert and return
+     if (!userInfo) {
+      alert('Please log in to publish a blog post.');
+     return;
+     }
+
+    // Extract user's name and access token
+    const name = userInfo.data.name;
+    const accessToken = userInfo.accessToken;
   
     // Create form element
     const form = document.createElement("form");
@@ -45,9 +59,11 @@ const createBlogForm = () => {
   
     // Append input fields and submit button to form
     form.append(titleLabel, titleInput,  imageLabel, imageInput, textLabel, textInput, submitButton , cancleButton);
+
+    
   
     // Add submit event listener to form
-    form.addEventListener("submit", async (event) => {
+    const createBlogPost = async (event) => { 
       event.preventDefault();
   
       // Retrieve input values
@@ -61,12 +77,6 @@ const createBlogForm = () => {
         return;
       }
 
-    const userInfo = localStorage.getItem("userInfo");
-    if (!userInfo) {
-      // If user is not logged in, display an alert to log in
-      alert('Please log in to publish a blog post.');
-      return;
-    }
     try{
 
         // Prepare data object for blog post
@@ -79,18 +89,25 @@ const createBlogForm = () => {
       },
       author: name// Add the name of the author to the blog post data
     };
+    
 
     // Send POST request to create blog post
     const blogPostUrl = `${Base_URL}${Blog_endpoint.POST_BY_USER(name)}`;
+    console.log('url', blogPostUrl);
     const blogPostOptions = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: "Bearer " + accessToken,
+        // Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify(postData)
     };
 
+    console.log('Request Headers:', blogPostOptions);
+
       const blogPostResponse = await fetch(blogPostUrl, blogPostOptions);
+      console.log('response', blogPostResponse);
       if (blogPostResponse.ok) {
         alert('Blog post created successfully!');
         // Clear input fields after successful post
@@ -108,7 +125,9 @@ const createBlogForm = () => {
       console.error('Error:', error);
       alert('An error occurred while processing your request. Please try again later.');
     }
-  });
+  };
+
+  form.addEventListener("submit", createBlogPost);
 
   // Append form to main element
   main.appendChild(form);
