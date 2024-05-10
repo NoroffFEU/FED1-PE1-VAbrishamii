@@ -63,6 +63,11 @@ const createBlogForm = () => {
 
     form.append(titleLabel, titleInput,  imageLabel, imageInput, textLabel, textInput, submitButton , cancleButton);
 
+    setTimeout(() => {
+      textInput.focus();
+      textInput.setSelectionRange(0, 0);
+  }, 0);
+
     
   
     // Add submit event listener to form

@@ -73,7 +73,7 @@ function LoginPage() {
 userIcon.addEventListener("click", LoginPage);
 
 function addPost(){
-  window.location.href = "./post/index.html";
+  window.location.href = "../post/index.html";
 }
 addPostTab.addEventListener('click', addPost);
 

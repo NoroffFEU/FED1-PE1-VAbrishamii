@@ -1,7 +1,7 @@
 main{
     justify-content: center;
     align-items: center;
-    margin: 2rem auto;
+    margin: 1rem auto;
  
   
 }
@@ -18,13 +18,14 @@ main{
     margin-bottom: 2rem;
     border: 2px solid var(--black);
     border-radius: 10px;
+    font-size: 2rem;
 
    
     
 }
 .blog-form textarea{
     width: 90%;
-    padding: 10rem;
+    padding: 8rem;
     margin-bottom: 2rem;
     border: 2px solid var(--black);
     border-radius: 20px;
@@ -36,6 +37,7 @@ main{
     margin-bottom: 10px;
     
 }
+
 .blue-btn{
     width: 15vw;
     margin: 1rem 10rem;
