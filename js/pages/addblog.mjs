@@ -14,7 +14,8 @@ const createBlogForm = () => {
     const userInfoString = localStorage.getItem("userInfo");
     const accessToken = localStorage.getItem("token");
     const userInfo = JSON.parse(userInfoString);
-    const name = userInfo.data.name;
+    const name = userInfo ? userInfo.data.name : null;
+    // const name = userInfo.data.name;
     console.log('name', name);
     console.log('accessToken' , accessToken);
 
@@ -63,10 +64,10 @@ const createBlogForm = () => {
 
     form.append(titleLabel, titleInput,  imageLabel, imageInput, textLabel, textInput, submitButton , cancleButton);
 
-    setTimeout(() => {
-      textInput.focus();
-      textInput.setSelectionRange(0, 0);
-  }, 0);
+  //   setTimeout(() => {
+  //     textInput.focus();
+  //     textInput.setSelectionRange(0, 0);
+  // }, 0);
 
     
   
