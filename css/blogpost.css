@@ -1,9 +1,10 @@
 main{
+    
     justify-content: center;
     align-items: center;
     margin: 1rem auto;
  
-  
+ 
 }
 .blog-form{
     display: flex;
@@ -11,34 +12,35 @@ main{
     margin: 0 auto;
     padding: 30px;
     align-items: center;
+     justify-content: space-around;
 }
 .blog-form input{
-    width: 90%;
+    width: 80%;
     padding: 1.5rem;
     margin-bottom: 2rem;
     border: 2px solid var(--black);
     border-radius: 10px;
-    font-size: 2rem;
-
-   
-    
+    font-size: 2rem; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
 }
 .blog-form textarea{
-    width: 90%;
+    width: 80%;
     padding: 8rem;
     margin-bottom: 2rem;
     border: 2px solid var(--black);
     border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
 
 }
 .blog-form label{
+   align-self: flex-start;
     font-size: 2rem;
-    margin-left: 2rem;
+    margin-left: 14rem;
     margin-bottom: 10px;
     
 }
 
-.blue-btn{
+.blue-btn {
     width: 15vw;
     margin: 1rem 10rem;
     padding: 20px;
@@ -50,6 +52,7 @@ main{
     color: var(--dark-blue);
     border: 2px solid var(--dark-blue);
     font-size: 2rem;
+    flex: 1;
 }
 .btn{
     width: 15vw;
@@ -62,7 +65,7 @@ main{
     justify-content: center;
     align-items: center;
     margin: 3rem auto;
-    width: 90%;
+    width: 50%;
 }
 .preview-section{
     margin-top: 10px;

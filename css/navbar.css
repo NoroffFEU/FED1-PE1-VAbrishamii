@@ -1,7 +1,7 @@
 .header{
     background-color: var(--white);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     max-width: 100%;
 }
