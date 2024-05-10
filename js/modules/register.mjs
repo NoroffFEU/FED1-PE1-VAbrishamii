@@ -16,9 +16,9 @@ signupForm.addEventListener('submit', async function(event){
         password: formData.get("password")
     }
 
-    const nameRegex = /^[a-zA-Z0-9_]+$/; // Name must not contain punctuation symbols apart from underscore (_)
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@stud\.noroff\.no$/; // Valid stud.noroff.no email address
-    const passwordMinLength = 8; // Minimum password length
+    const nameRegex = /^[a-zA-Z0-9_]+$/; 
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@stud\.noroff\.no$/; 
+    const passwordMinLength = 8; 
 
     const name = registerData.name;
     const email = registerData.email;

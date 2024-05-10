@@ -3,29 +3,32 @@ import { createNavbar } from "./navbar.mjs";
 
 createNavbar('container');
 
+
+
+
 // Function to create the blog post form
 const createBlogForm = () => {
     const main = document.querySelector("main");
 
     // Get user information from local storage
     const userInfoString = localStorage.getItem("userInfo");
+    const accessToken = localStorage.getItem("token");
     const userInfo = JSON.parse(userInfoString);
+    const name = userInfo.data.name;
+    console.log('name', name);
+    console.log('accessToken' , accessToken);
 
-    // If user information is not available, display an alert and return
+    // check user information is available
      if (!userInfo) {
       alert('Please log in to publish a blog post.');
      return;
      }
 
-    // Extract user's name and access token
-    const name = userInfo.data.name;
-    const accessToken = userInfo.accessToken;
-  
-    // Create form element
+    //create form
     const form = document.createElement("form");
     form.className = "blog-form";
   
-    // Create input fields for title, text, and image URL
+  
     const titleLabel = document.createElement("label");
     titleLabel.innerText = "Title:";
     const titleInput = document.createElement("input");
@@ -57,7 +60,7 @@ const createBlogForm = () => {
     cancleButton.type = "submit";
     cancleButton.innerText = "Decline";
   
-    // Append input fields and submit button to form
+
     form.append(titleLabel, titleInput,  imageLabel, imageInput, textLabel, textInput, submitButton , cancleButton);
 
     
@@ -66,7 +69,7 @@ const createBlogForm = () => {
     const createBlogPost = async (event) => { 
       event.preventDefault();
   
-      // Retrieve input values
+      
       const title = titleInput.value;
       const text = textInput.value;
       const image = imageInput.value;
@@ -79,7 +82,7 @@ const createBlogForm = () => {
 
     try{
 
-        // Prepare data object for blog post
+       
     const postData = {
       title,
       body: text,
@@ -87,7 +90,7 @@ const createBlogForm = () => {
         url: image,
         alt: 'Blog image'
       },
-      author: name// Add the name of the author to the blog post data
+      author: name
     };
     
 
@@ -99,7 +102,7 @@ const createBlogForm = () => {
       headers: {
         'Content-Type': 'application/json',
         Authorization: "Bearer " + accessToken,
-        // Authorization: `Bearer ${accessToken}`,
+       
       },
       body: JSON.stringify(postData)
     };
@@ -109,16 +112,15 @@ const createBlogForm = () => {
       const blogPostResponse = await fetch(blogPostUrl, blogPostOptions);
       console.log('response', blogPostResponse);
       if (blogPostResponse.ok) {
-        alert('Blog post created successfully!');
-        // Clear input fields after successful post
+        displayPreview(postData, name);
+
+        // alert('Blog post created successfully!');
+     
         titleInput.value = '';
         textInput.value = '';
         imageInput.value = '';
-
-        // Call function to display the newly created blog post
-        displayBlogPost(postData);
       } else {
-        // Handle error response from creating blog post
+        
         alert('Failed to create blog post. Please try again later.');
       }
     } catch (error) {
@@ -129,34 +131,51 @@ const createBlogForm = () => {
 
   form.addEventListener("submit", createBlogPost);
 
-  // Append form to main element
+ 
   main.appendChild(form);
+  return form;
+
 };
 
-   
-  // Function to display the blog post on the page
-const displayBlogPost = (postData) => {
-  const main = document.querySelector("main");
 
-  // Create elements to display the blog post
-  const blogPost = document.createElement("div");
-  blogPost.className = "blog-post";
+const previewSection = () => {
+  const main = document.querySelector("main");
+  const preview = document.createElement("div");
+  preview.className = "previewDiv";
+  const previewTitle = document.createElement('h2');
+  previewTitle.innerText = 'Preview';
+  preview.appendChild(previewTitle);
+  const previewSection = document.createElement("div");
+  previewSection.className = "preview-section";
+  preview.appendChild(previewSection);
+  main.appendChild(preview);
+  return preview;
+};
+
+const displayPreview = (postData, name) => {
+  const previewSection = document.querySelector(".preview-section");
+
+  previewSection.innerHTML = ""; 
   const title = document.createElement("h2");
   title.innerText = postData.title;
-  const text = document.createElement("p");
-  text.innerText = postData.body;
   const image = document.createElement("img");
   image.src = postData.media.url;
   image.alt = postData.media.alt;
-
-  // Append elements to the blog post container
-  blogPost.append(title, text, image);
-
-  // Append blog post to the main element
-  main.appendChild(blogPost);
+  const text = document.createElement("p");
+  text.innerText = postData.body;
+  const auther = document.createElement('p');
+  auther.className = 'auther';
+  auther.innerText = 'Published By: ' + name;
+ 
+  previewSection.append(title, image, text, auther);
 };
 
+const form = createBlogForm();
+const preview = previewSection();
+const main = document.querySelector("main");
+main.appendChild(form);
+main.appendChild(preview);
+
+
   
-  // Call the function to create the blog post form
-  createBlogForm();
   

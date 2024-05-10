@@ -1,28 +1,40 @@
+main{
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+ 
+  
+}
 .blog-form{
     display: flex;
     flex-direction: column;
-    margin: 0 4rem;
+    margin: 0 auto;
     padding: 30px;
+    align-items: center;
 }
 .blog-form input{
-    width: 50%;
-    padding: 1rem;
+    width: 90%;
+    padding: 1.5rem;
     margin-bottom: 2rem;
     border: 2px solid var(--black);
     border-radius: 10px;
+
+   
+    
 }
 .blog-form textarea{
-    width: 50%;
-    padding: 6rem;
+    width: 90%;
+    padding: 10rem;
     margin-bottom: 2rem;
     border: 2px solid var(--black);
     border-radius: 20px;
 
 }
 .blog-form label{
-    font-size: 1rem;
+    font-size: 2rem;
     margin-left: 2rem;
     margin-bottom: 10px;
+    
 }
 .blue-btn{
     width: 15vw;
@@ -35,10 +47,28 @@
     background-color: var(--white);
     color: var(--dark-blue);
     border: 2px solid var(--dark-blue);
+    font-size: 2rem;
 }
 .btn{
     width: 15vw;
 }
-/* form button{
+
+.previewDiv{
+    border-bottom: 2px solid var(--black);
     display: flex;
-} */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem auto;
+    width: 90%;
+}
+.preview-section{
+    margin-top: 10px;
+}
+.previewDiv h2{
+    font-size: 4rem;
+    color: var(--dark-blue);
+}
+.auther{
+    color: var(--dark-blue);
+}
