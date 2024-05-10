@@ -69,7 +69,7 @@ loginForm.addEventListener('submit', async function (event) {
         localStorage.setItem('token', token);
         
         console.log(token)
-        // window.location.href = '../index.html';
+        window.location.href = '../index.html';
     } catch (error) {
         alert('Invalid usernam and password! Please try again.');
     }

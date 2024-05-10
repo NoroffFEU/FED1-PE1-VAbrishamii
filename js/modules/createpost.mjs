@@ -1,9 +1,11 @@
-// import { Base_URL, Blog_endpoint } from "../modules/api.mjs";
-// import { createNavbar } from "./pages/navbar.mjs";
-// import { createBlogForm } from "../pages/createpostform.mjs";
+import { Base_URL, Blog_endpoint } from "../modules/api.mjs";
+import { createBlogForm } from "../pages/createpostform.mjs";
 
+const form = createBlogForm();
 
-// createNavbar('container');
+export async function createBlogPost(){
+
+}
 
 
 // const main = document.querySelector("main");
