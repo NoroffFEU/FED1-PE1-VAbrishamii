@@ -10,13 +10,13 @@ main{
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    padding: 30px;
+    padding: 10px;
     align-items: center;
      justify-content: space-around;
 }
 .blog-form input{
     width: 70%;
-    padding: 1rem;
+    padding: 0.8rem;
     margin-bottom: 2rem;
     border: 2px solid var(--black);
     border-radius: 10px;
@@ -25,7 +25,7 @@ main{
 }
 .blog-form textarea{
     width: 70%;
-    padding: 6rem;
+    padding: 5rem;
     margin-bottom: 2rem;
     border: 2px solid var(--black);
     border-radius: 20px;
@@ -39,14 +39,12 @@ main{
     margin-bottom: 10px;
     
 }
-.blog-form button{
-    flex: 1;
-}
+
 
 .blue-btn {
     width: 12vw;
     margin: 1rem;
-    padding:15px;
+    padding:10px;
     border-radius: 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
     cursor: pointer;
@@ -59,11 +57,11 @@ main{
 }
 .btn{
     width: 12vw;
-    padding: 15px;
+    padding: 10px;
 }
 
 .previewDiv{
-    border-bottom: 2px solid var(--black);
+    border-top: 2px solid var(--black);
     display: flex;
     flex-direction: column;
     justify-content: center;
