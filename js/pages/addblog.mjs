@@ -48,6 +48,8 @@ const createBlogForm = () => {
     textInput.name = "text";
   
     // Create submit button
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.className = 'buttonDiv';
     const submitButton = document.createElement("button");
     submitButton.classList.add('blue-btn');
     submitButton.type = "submit";
@@ -55,11 +57,13 @@ const createBlogForm = () => {
 
     const cancleButton = document.createElement("button");
     cancleButton.classList.add('btn');
-    cancleButton.type = "submit";
+    cancleButton.type = "reset";
     cancleButton.innerText = "Decline";
   
 
-    form.append(titleLabel, titleInput,  imageLabel, imageInput, textLabel, textInput, submitButton , cancleButton);
+    form.append(titleLabel, titleInput,  imageLabel, imageInput, textLabel, textInput, buttonsContainer);
+    buttonsContainer.appendChild(submitButton);
+    buttonsContainer.appendChild(cancleButton);
 
   //   setTimeout(() => {
   //     textInput.focus();
@@ -140,6 +144,13 @@ const createBlogForm = () => {
   };
 
   form.addEventListener("submit", createBlogPost);
+
+  form.addEventListener("reset", () => {
+    titleInput.value = '';
+    textInput.value = '';
+    imageInput.value = '';
+  })
+
 
  
   main.appendChild(form);

@@ -15,17 +15,17 @@ main{
      justify-content: space-around;
 }
 .blog-form input{
-    width: 80%;
-    padding: 1.5rem;
+    width: 70%;
+    padding: 1rem;
     margin-bottom: 2rem;
     border: 2px solid var(--black);
     border-radius: 10px;
-    font-size: 2rem; 
+    font-size: 1.5rem; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
 }
 .blog-form textarea{
-    width: 80%;
-    padding: 8rem;
+    width: 70%;
+    padding: 6rem;
     margin-bottom: 2rem;
     border: 2px solid var(--black);
     border-radius: 20px;
@@ -34,16 +34,19 @@ main{
 }
 .blog-form label{
    align-self: flex-start;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-left: 14rem;
     margin-bottom: 10px;
     
 }
+.blog-form button{
+    flex: 1;
+}
 
 .blue-btn {
-    width: 15vw;
-    margin: 1rem 10rem;
-    padding: 20px;
+    width: 12vw;
+    margin: 1rem;
+    padding:15px;
     border-radius: 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
     cursor: pointer;
@@ -52,10 +55,11 @@ main{
     color: var(--dark-blue);
     border: 2px solid var(--dark-blue);
     font-size: 2rem;
-    flex: 1;
+  
 }
 .btn{
-    width: 15vw;
+    width: 12vw;
+    padding: 15px;
 }
 
 .previewDiv{
@@ -71,9 +75,16 @@ main{
     margin-top: 10px;
 }
 .previewDiv h2{
-    font-size: 4rem;
+    font-size: 3rem;
     color: var(--dark-blue);
 }
-/* .auther{
+.preview-section p{
+    font-size: 2rem;
+}
+.preview-section img{
+    width: 50%;
+    margin: 1rem auto;
+}
+.auther{
     color: var(--dark-blue);
-} */
+}
