@@ -16,11 +16,11 @@ const createBlogForm = () => {
     console.log('name', name);
     console.log('accessToken' , accessToken);
 
-    // check user information is available
-     if (!userInfo) {
-      alert('Please log in to publish a blog post.');
-     return;
-     }
+    // // check user information is available
+    //  if (!userInfo) {
+    //   alert('Please log in to publish a blog post.');
+    //  return;
+    //  }
 
     //create form
     const form = document.createElement("form");
@@ -83,6 +83,8 @@ const createBlogForm = () => {
         return;
       }
 
+   
+
     try{
 
        
@@ -109,6 +111,11 @@ const createBlogForm = () => {
       },
       body: JSON.stringify(postData)
     };
+    // check user information is available
+    if (!userInfo) {
+      alert('Please log in to publish a blog post.');
+     return;
+     }
 
     console.log('Request Headers:', blogPostOptions);
 
