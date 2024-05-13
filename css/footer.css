@@ -1,15 +1,17 @@
 #footer{
     display: flex;
     background-color: var(--white);
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    margin: 0 6rem;
     max-width: 100%;
 
 }
 .icon{
     font-size: 1.5rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
 }
 .icon-item{
     display: flex;
@@ -19,4 +21,5 @@
 .icon-item li{
     margin: 0 15px;
     cursor: pointer;
+    font-size: 2rem;
 }

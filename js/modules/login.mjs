@@ -67,9 +67,18 @@ loginForm.addEventListener('submit', async function (event) {
         console.log('Username:', username);
         console.log('Password:', password);
         localStorage.setItem('token', token);
+        console.log(token);
+
+
+        const isAdmin = checkIfAdmin(username,password);
+
+        if (isAdmin){
+            window.location.href = '../post/edit.html';
+        }else{
+           
+            window.location.href = '../index.html';
+        }
         
-        console.log(token)
-        window.location.href = '../index.html';
     } catch (error) {
         alert('Invalid usernam and password! Please try again.');
     }
@@ -77,6 +86,14 @@ loginForm.addEventListener('submit', async function (event) {
     console.log('Username:', username);
     console.log('Password:', password);
 });
+
+function checkIfAdmin(username, password){
+    if (username ==='vabri2023@stud.noroff.no' && password ==='Avnoroff23'){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 
 //Append logo and login form to the container

@@ -1,7 +1,11 @@
 import { Base_URL, Blog_endpoint } from "../modules/api.mjs";
+import { createFooter } from "./footer.mjs";
 import { createNavbar } from "./navbar.mjs";
 
 createNavbar('container');
+createFooter
+
+
 
 // Function to create the blog post form
 const createBlogForm = () => {
@@ -12,15 +16,8 @@ const createBlogForm = () => {
     const accessToken = localStorage.getItem("token");
     const userInfo = JSON.parse(userInfoString);
     const name = userInfo ? userInfo.data.name : null;
-    // const name = userInfo.data.name;
     console.log('name', name);
     console.log('accessToken' , accessToken);
-
-    // // check user information is available
-    //  if (!userInfo) {
-    //   alert('Please log in to publish a blog post.');
-    //  return;
-    //  }
 
     //create form
     const form = document.createElement("form");
@@ -64,12 +61,6 @@ const createBlogForm = () => {
     form.append(titleLabel, titleInput,  imageLabel, imageInput, textLabel, textInput, buttonsContainer);
     buttonsContainer.appendChild(submitButton);
     buttonsContainer.appendChild(cancleButton);
-
-  //   setTimeout(() => {
-  //     textInput.focus();
-  //     textInput.setSelectionRange(0, 0);
-  // }, 0);
-
     
   
     // Add submit event listener to form

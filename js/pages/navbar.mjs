@@ -11,21 +11,16 @@ const logo = createLogo("../asset/images/logo.png", "Trip", "logo");
 mainContent.appendChild(logo);
 
 // Create tabs for Add Post and Edit Post
-const menu = document.createElement("div");
-menu.classList.add("tab-container");
+// const menu = document.createElement("div");
+// menu.classList.add("tab-container");
 
-const addPostTab = document.createElement("div");
-addPostTab.classList.add("tab");
-addPostTab.textContent = "Add Post";
+// const addPostTab = document.createElement("div");
+// addPostTab.classList.add("tab");
+// addPostTab.textContent = "Add Your Post";
 
-const editPostTab = document.createElement("div");
-editPostTab.classList.add("tab");
-editPostTab.textContent = "Edit Post";
 
-menu.appendChild(addPostTab);
-menu.appendChild(editPostTab);
-
-mainContent.appendChild(menu);
+// menu.appendChild(addPostTab);
+// mainContent.appendChild(menu);
 
 // Create the icons
 const iconDiv = document.createElement("div");
@@ -33,6 +28,11 @@ iconDiv.classList.add("icon");
 
 const iconList = document.createElement("ul");
 iconList.classList.add("icon-item");
+
+const addIcon = document.createElement('li');
+const addIconContent = document.createElement('i');
+addIconContent.classList.add("fa-solid", "fa-plus", "add-icon");
+addIcon.appendChild(addIconContent);
 
 const homeIcon = document.createElement("li");
 const homeIconContent = document.createElement("i");
@@ -52,11 +52,12 @@ searchIcon.appendChild(searchIconContent);
 
 
 // Append icons to each other and to the document
+addIcon.appendChild(addIconContent);
 homeIcon.appendChild(homeIconContent);
 userIcon.appendChild(userIconContent);
 searchIcon.appendChild(searchIconContent);
 
-
+iconList.appendChild(addIcon);
 iconList.appendChild(homeIcon);
 iconList.appendChild(userIcon);
 iconList.appendChild(searchIcon);
@@ -69,18 +70,16 @@ container.appendChild(mainContent);
 function LoginPage() {
   window.location.href = "../account/login.html";
 }
-
 userIcon.addEventListener("click", LoginPage);
 
 function addPost(){
   window.location.href = "../post/index.html";
 }
-addPostTab.addEventListener('click', addPost);
+addIcon.addEventListener('click', addPost);
 
-function editPost(){
-  window.location.href = "./post/edit.html";
-}
-editPostTab.addEventListener('click', editPost);
+homeIcon.addEventListener('click', function() {
+  window.location.href = '../index.html';
+});
 
 }
 

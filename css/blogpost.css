@@ -65,7 +65,7 @@ main{
 }
 
 .previewDiv{
-    border-top: 2px solid var(--black);
+    /* border-top: 2px solid var(--black); */
     display: flex;
     flex-direction: column;
     justify-content: center;
