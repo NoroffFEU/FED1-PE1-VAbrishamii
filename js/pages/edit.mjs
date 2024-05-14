@@ -1,4 +1,4 @@
-import { allPost } from "../modules/blogpost.mjs";
+import { allPost } from "../modules/allpost.mjs";
 import { singlePost } from "../modules/singlepost.mjs";
 import { createFooter } from "./footer.mjs";
 import { createNavbar } from "./navbar.mjs";
@@ -21,14 +21,11 @@ export function editPostPage() {
             const postDiv = document.createElement('div');
             postDiv.classList.add('post');
 
-            postDiv.addEventListener('click', async()=>{
-                try{
-                    const clickedPost = await singlePost(post.name, post.id);
-                    const encodedPost = encodeURIComponent(JSON.stringify(clickedPost));
-                    window.location.href = `../post/update.html?post=${encodedPost}`;
-                }catch (error){
-                    console.log('error fetching clicked post', error);
-                }
+            postDiv.addEventListener('click', ()=>{
+                const postId = post.id;
+                const postName = post.author.name; // Extract the name from post.author
+                console.log(`Navigating to update page for post id: ${postId} and name: ${postName}`); 
+                window.location.href = `../post/update.html?id=${postId}&name=${postName}`;
             });
 
             const image = document.createElement('img');
