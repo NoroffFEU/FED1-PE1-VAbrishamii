@@ -1,6 +1,14 @@
 import { Base_URL, Blog_endpoint } from "./api.mjs";
+import { singlePost } from "./singlepost.mjs";
+export async function deletePost(name, postId) {
+    const post = await singlePost(name, postId);
+    console.log('post', post);
 
-export async function deletePost(name, id) {
+    if (!post || !post.data) {
+        throw new Error('Invalid post data');
+    }
+
+    // const postData = post.data;
     const url = `${Base_URL}${Blog_endpoint.POST_BY_ID(name, id)}`;
     
     try {

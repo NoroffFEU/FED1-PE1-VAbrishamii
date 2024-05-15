@@ -29,17 +29,23 @@ export async function displaySinglePost(name, postId) {
 
         const postData = post.data;
 
-        const main = document.querySelector('main');
-        main.innerHTML = `
-            <h1>${postData.title}</h1>
-            <img src="${postData.media.url}" alt="${postData.title}">
-            <p>${postData.body}</p>
-            <p>Author: ${postData.author.name}</p>
+        const singlePostContent = document.getElementById('single-post');
+        singlePost.innerHTML = '';
+
+        const postContent = `
+           <div class= 'single-post'>
+           <h1>${postData.title}</h1>
+           <img src="${postData.media.url}" alt="${postData.title}">
+           <p>${postData.body}</p>
+           <p>Author: ${postData.author.name}</p>
+           <div>
         `;
+        singlePostContent.innerHTML = postContent;
     } catch (error) {
         console.error('Error displaying single post:', error);
     }
 }
+
 export async function displayPostFromUrlParams() {
         try {
             const params = new URLSearchParams(window.location.search);
@@ -65,3 +71,4 @@ export async function displayPostFromUrlParams() {
     
     
     displayPostFromUrlParams();
+  

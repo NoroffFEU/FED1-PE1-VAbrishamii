@@ -3,6 +3,8 @@ import { createLogo } from "../modules/logo.mjs";
 export async function createFooter(){
     const footer = document.getElementById('footer');
 
+    footer.innerHTML = '';
+
     const logo = createLogo("../asset/images/logo.png", "Trip", "logo");
     footer.appendChild(logo);
 

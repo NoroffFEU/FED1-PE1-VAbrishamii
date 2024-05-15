@@ -1,0 +1,24 @@
+.single-post{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+.edit-container{
+    display: inline;
+    margin: 2rem auto;
+
+}
+.edit-container ul{
+    display: flex;
+    justify-content:flex-end ;
+    margin-right:4rem;
+   
+}
+.edit-container ul li i{
+    padding: 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+}

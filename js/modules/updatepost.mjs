@@ -1,6 +1,16 @@
 import { Base_URL, Blog_endpoint } from "./api.mjs";
+import { singlePost } from "./singlepost.mjs";
 
-export async function updatePost(name, id, updatedPostData) {
+export async function updatePost(name, postId) {
+
+    const post = await singlePost(name, postId);
+    console.log('post', post);
+
+    if (!post || !post.data) {
+        throw new Error('Invalid post data');
+    }
+
+    const postData = post.data;
     const url = `${Base_URL}${Blog_endpoint.POST_BY_ID(name, id)}`;
     
     try {
@@ -9,7 +19,7 @@ export async function updatePost(name, id, updatedPostData) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(updatedPostData)
+            body: JSON.stringify(postData)
         });
 
         if (!response.ok) {
