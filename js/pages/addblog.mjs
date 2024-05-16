@@ -118,8 +118,10 @@ const createBlogForm = () => {
       console.log('response', blogPostResponse);
       if (blogPostResponse.ok) {
         displayPreview(postData, name);
+        console.log('postdata',postData);
 
         // alert('Blog post created successfully!');
+
      
         titleInput.value = '';
         textInput.value = '';

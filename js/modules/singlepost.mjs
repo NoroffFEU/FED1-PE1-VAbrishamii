@@ -11,6 +11,7 @@ export async function singlePost(name,id){
 
         }
         const post = await response.json();
+        console.log('post', post);
         return post;
     }catch (error){
         console.log('error fetching post', error);
@@ -18,57 +19,57 @@ export async function singlePost(name,id){
     }
 }
 
-export async function displaySinglePost(name, postId) {
-    try {
-        const post = await singlePost(name, postId);
-        console.log('post', post);
+// export async function displaySinglePost(name, postId) {
+//     try {
+//         const post = await singlePost(name, postId);
+//         console.log('post', post);
 
-        if (!post || !post.data) {
-            throw new Error('Invalid post data');
-        }
+//         if (!post || !post.data) {
+//             throw new Error('Invalid post data');
+//         }
 
-        const postData = post.data;
+//         const postData = post.data;
 
-        const singlePostContent = document.getElementById('single-post');
-        singlePost.innerHTML = '';
+//         const singlePostContent = document.getElementById('single-post');
+//         singlePostContent.innerHTML = '';
 
-        const postContent = `
-           <div class= 'single-post'>
-           <h1>${postData.title}</h1>
-           <img src="${postData.media.url}" alt="${postData.title}">
-           <p>${postData.body}</p>
-           <p>Author: ${postData.author.name}</p>
-           <div>
-        `;
-        singlePostContent.innerHTML = postContent;
-    } catch (error) {
-        console.error('Error displaying single post:', error);
-    }
-}
+//         const postContent = `
+//            <div class= 'single-post'>
+//             <h1>${postData.title}</h1>
+//             <img src="${postData.media.url}" alt="${postData.title}">
+//             <p>${postData.body}</p>
+//             <p>Author: ${postData.author.name}</p>
+//            <div>
+//         `;
+//         singlePostContent.innerHTML = postContent;
+//     } catch (error) {
+//         console.error('Error displaying single post:', error);
+//     }
+// }
 
-export async function displayPostFromUrlParams() {
-        try {
-            const params = new URLSearchParams(window.location.search);
-            console.log('URL Params:', params.toString());
+// export async function displayPostFromUrlParams() {
+//         try {
+//             const params = new URLSearchParams(window.location.search);
+//             console.log('URL Params:', params.toString());
     
-            const postId = params.get('id');
-            console.log('postid', postId)
-            const postName = params.get('name');
-            console.log('postname', postName)
+//             const postId = params.get('id');
+//             console.log('postid', postId)
+//             const postName = params.get('name');
+//             console.log('postname', postName)
     
-            if (!postId || !postName) {
-                throw new Error('Post ID or name missing from URL parameters');
-            }
+//             if (!postId || !postName) {
+//                 throw new Error('Post ID or name missing from URL parameters');
+//             }
     
-            console.log(`Post ID from URL: ${postId}`);
-            console.log(`Post name from URL: ${postName}`);
+//             console.log(`Post ID from URL: ${postId}`);
+//             console.log(`Post name from URL: ${postName}`);
     
-            await displaySinglePost(postName, postId);
-        } catch (error) {
-            console.error('Error displaying post from URL parameters:', error);
-        }
-    }
+//             await displaySinglePost(postName, postId);
+//         } catch (error) {
+//             console.error('Error displaying post from URL parameters:', error);
+//         }
+//     }
     
     
-    displayPostFromUrlParams();
+//     displayPostFromUrlParams();
   

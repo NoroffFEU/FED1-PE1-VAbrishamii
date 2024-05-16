@@ -1,34 +1,50 @@
-import { createNavbar } from "./navbar.mjs";
-import { createFooter } from "./footer.mjs";
-import { updatePost } from "../modules/updatepost.mjs";
-import { deletePost } from "../modules/deletepost.mjs";
-import { displaySinglePost } from "../modules/singlepost.mjs";
+export function createForm() {
+    const form = document.createElement('form');
+    form.id = 'edit-form'; // Set form id
+
+    const titleLabel = document.createElement('label');
+    titleLabel.textContent = 'Title:';
+    const titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.id = 'title';
+    titleInput.name = 'title';
+    titleLabel.appendChild(titleInput); // Nest input inside label
+
+    const imageLabel = document.createElement('label');
+    imageLabel.textContent = 'Image URL:';
+    const imageInput = document.createElement('input');
+    imageInput.type = 'text';
+    imageInput.id = 'image';
+    imageInput.name = 'image';
+    titleLabel.appendChild(titleInput); // Nest input inside label
+
+    const bodyLabel = document.createElement('label');
+    bodyLabel.textContent = 'Body:';
+    const bodyTextarea = document.createElement('textarea');
+    bodyTextarea.id = 'body';
+    bodyTextarea.name = 'body';
+    bodyLabel.appendChild(bodyTextarea); // Nest textarea inside label
 
 
 
-async function initPage(){
-    createNavbar('container');
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.textContent = 'Save Changes';
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const postId = urlParams.get('id');
-    console.log('id', postId)
-    const name = urlParams.get('name');
-    console.log('name', name);
-    displaySinglePost(name ,postId);
-    
-    const editIcon = document.querySelector('.fa-pen-to-square');
-    const trashIcon = document.querySelector('.fa-trash-can');
-    editIcon.addEventListener('click', handleEdit(name, postId));
-    trashIcon.addEventListener('click',handleDelete(name, postId));
 
-    createFooter(); 
+
+
+    form.appendChild(titleLabel);
+    form.appendChild(document.createElement('br')); // Add line break
+    form.appendChild(bodyLabel);
+    form.appendChild(document.createElement('br')); // Add line break
+    form.appendChild(submitButton);
+
+    return form;
 }
 
-function handleEdit(name,postId){
-    updatePost(name, postId);
-}
-function handleDelete(name, postId){
-    deletePost(name, postId);
-}
-
-initPage();
+// const form = document.getElementById('edit-form');
+// form.addEventListener('submit', (event) => {
+//     event.preventDefault(); // Prevent default form submission
+//     updatePost(postName, postId); // Call updatePost with post ID and name
+// });
