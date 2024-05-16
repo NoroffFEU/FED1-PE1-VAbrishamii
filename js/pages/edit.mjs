@@ -1,5 +1,4 @@
 import { allPost } from "../modules/allpost.mjs";
-import { singlePost } from "../modules/singlepost.mjs";
 import { createFooter } from "./footer.mjs";
 import { createNavbar } from "./navbar.mjs";
 import { deletePost } from "../modules/deletepost.mjs";
@@ -74,6 +73,7 @@ async function displayPost (){
     }
    
 }
+
 
 
 displayPost();

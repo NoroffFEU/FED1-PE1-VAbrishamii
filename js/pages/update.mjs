@@ -1,6 +1,14 @@
-export function createForm() {
+import { singlePost } from "../modules/singlepost.mjs";
+import { updatePost } from "../modules/updatepost.mjs";
+
+
+export async function createForm(name, id ) {
+    try {
+        const postData = await singlePost(name, id);
+        console.log('postdata', postData);
+    
     const form = document.createElement('form');
-    form.id = 'edit-form'; // Set form id
+    form.id = 'edit-form'; 
 
     const titleLabel = document.createElement('label');
     titleLabel.textContent = 'Title:';
@@ -8,6 +16,7 @@ export function createForm() {
     titleInput.type = 'text';
     titleInput.id = 'title';
     titleInput.name = 'title';
+    titleInput.value = postData.data.title;
     titleLabel.appendChild(titleInput); // Nest input inside label
 
     const imageLabel = document.createElement('label');
@@ -16,35 +25,47 @@ export function createForm() {
     imageInput.type = 'text';
     imageInput.id = 'image';
     imageInput.name = 'image';
-    titleLabel.appendChild(titleInput); // Nest input inside label
+    imageInput.value = postData.data.media.url;
+    imageLabel.appendChild(imageInput); // Nest input inside label
 
     const bodyLabel = document.createElement('label');
     bodyLabel.textContent = 'Body:';
     const bodyTextarea = document.createElement('textarea');
     bodyTextarea.id = 'body';
     bodyTextarea.name = 'body';
+    bodyTextarea.value = postData.data.body;
     bodyLabel.appendChild(bodyTextarea); // Nest textarea inside label
 
 
-
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.className = 'buttonDiv';
     const submitButton = document.createElement('button');
     submitButton.type = 'submit';
+    submitButton.className = 'blue-btn';
     submitButton.textContent = 'Save Changes';
+    
 
 
 
 
     form.appendChild(titleLabel);
-    form.appendChild(document.createElement('br')); // Add line break
+    form.appendChild(imageLabel);
     form.appendChild(bodyLabel);
-    form.appendChild(document.createElement('br')); // Add line break
     form.appendChild(submitButton);
+   
+    const mainElement = document.querySelector('main');
+    mainElement.appendChild(form);
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault(); 
+        await updatePost(name, id);
+    });
 
     return form;
+}catch(error){
+    console.log('error fetching post', error);
+    alert('Failed to fetch post data');
+}
 }
 
-// const form = document.getElementById('edit-form');
-// form.addEventListener('submit', (event) => {
-//     event.preventDefault(); // Prevent default form submission
-//     updatePost(postName, postId); // Call updatePost with post ID and name
-// });
+
