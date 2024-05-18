@@ -87,7 +87,7 @@ loginForm.addEventListener('submit', async function (event) {
     console.log('Password:', password);
 });
 
-function checkIfAdmin(username, password){
+export async function checkIfAdmin(username, password){
     if (username ==='vabri2023@stud.noroff.no' && password ==='Avnoroff23'){
         return true;
     }else{

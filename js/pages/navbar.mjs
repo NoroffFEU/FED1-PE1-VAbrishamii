@@ -1,3 +1,4 @@
+import { checkIfAdmin } from "../modules/login.mjs";
 import { createLogo } from "../modules/logo.mjs";
 
 export function createNavbar(containerId){
@@ -10,17 +11,6 @@ mainContent.classList.add("header");
 const logo = createLogo("../asset/images/logo.png", "Trip", "logo");
 mainContent.appendChild(logo);
 
-// Create tabs for Add Post and Edit Post
-// const menu = document.createElement("div");
-// menu.classList.add("tab-container");
-
-// const addPostTab = document.createElement("div");
-// addPostTab.classList.add("tab");
-// addPostTab.textContent = "Add Your Post";
-
-
-// menu.appendChild(addPostTab);
-// mainContent.appendChild(menu);
 
 // Create the icons
 const iconDiv = document.createElement("div");
@@ -61,8 +51,10 @@ iconList.appendChild(addIcon);
 iconList.appendChild(homeIcon);
 iconList.appendChild(userIcon);
 iconList.appendChild(searchIcon);
-iconDiv.appendChild(iconList);
 
+
+
+iconDiv.appendChild(iconList);
 mainContent.appendChild(iconDiv);
 container.appendChild(mainContent);
 
@@ -80,6 +72,8 @@ addIcon.addEventListener('click', addPost);
 homeIcon.addEventListener('click', function() {
   window.location.href = '../index.html';
 });
+
+
 
 }
 
