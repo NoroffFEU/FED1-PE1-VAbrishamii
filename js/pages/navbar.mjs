@@ -1,4 +1,4 @@
-import { checkIfAdmin } from "../modules/login.mjs";
+
 import { createLogo } from "../modules/logo.mjs";
 
 export function createNavbar(containerId){
@@ -52,6 +52,21 @@ iconList.appendChild(homeIcon);
 iconList.appendChild(userIcon);
 iconList.appendChild(searchIcon);
 
+if (isAdmin()) {
+  const editIcon = document.createElement('li');
+  const editIconContent = document.createElement('i');
+  editIconContent.classList.add("fa-solid", "fa-edit");
+  editIcon.appendChild(editIconContent);
+
+  // Append the edit icon to the icon list
+  iconList.appendChild(editIcon);
+
+  // Add event listener for the edit icon
+  editIcon.addEventListener('click', function() {
+    window.location.href = '../post/edit.html';
+  });
+}
+
 
 
 iconDiv.appendChild(iconList);
@@ -72,6 +87,10 @@ addIcon.addEventListener('click', addPost);
 homeIcon.addEventListener('click', function() {
   window.location.href = '../index.html';
 });
+
+function isAdmin() {
+  return localStorage.getItem('isAdmin') === 'true';
+}
 
 
 

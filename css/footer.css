@@ -23,3 +23,13 @@
     cursor: pointer;
     font-size: 2rem;
 }
+.contact-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contact-info p{
+    margin: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+}

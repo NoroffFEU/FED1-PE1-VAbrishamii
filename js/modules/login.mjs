@@ -51,7 +51,15 @@ export async function loginUser(email, password) {
         throw new Error('Login failed');
     }
 }
-
+export function checkIfAdmin(username, password){
+    if (username ==='vabri2023@stud.noroff.no' && password ==='Avnoroff23'){
+        localStorage.setItem('isAdmin', 'true');
+        return true;
+    }else{
+        localStorage.setItem('isAdmin', 'false');
+        return false;
+    }
+}
 
 // Add event listener to handle form submission
 const loginForm = createLoginForm();
@@ -75,7 +83,6 @@ loginForm.addEventListener('submit', async function (event) {
         if (isAdmin){
             window.location.href = '../post/edit.html';
         }else{
-           
             window.location.href = '../index.html';
         }
         
@@ -87,13 +94,7 @@ loginForm.addEventListener('submit', async function (event) {
     console.log('Password:', password);
 });
 
-export async function checkIfAdmin(username, password){
-    if (username ==='vabri2023@stud.noroff.no' && password ==='Avnoroff23'){
-        return true;
-    }else{
-        return false;
-    }
-}
+
 
 
 //Append logo and login form to the container

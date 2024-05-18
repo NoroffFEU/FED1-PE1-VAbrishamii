@@ -8,6 +8,18 @@ export async function createFooter(){
     const logo = createLogo("../asset/images/logo.png", "Trip", "logo");
     footer.appendChild(logo);
 
+    const contactDiv = document.createElement('div');
+    contactDiv.classList.add('contact-info');
+    
+    const emailParagraph = document.createElement('p');
+    emailParagraph.textContent = 'Contact Us: trip@trip.no';
+    contactDiv.appendChild(emailParagraph);
+
+
+    const phoneParagraph = document.createElement('p');
+    phoneParagraph.textContent = 'Tel: 9999999';
+    contactDiv.appendChild(phoneParagraph);
+
     const iconDiv = document.createElement('div');
     iconDiv.classList.add('icon');
 
@@ -38,6 +50,7 @@ export async function createFooter(){
     iconList.appendChild(xIcon);
     iconDiv.appendChild(iconList);
 
+    footer.appendChild(contactDiv);
     footer.appendChild(iconDiv);
     
 }
