@@ -17,7 +17,7 @@ export async function createForm(name, id ) {
     titleInput.id = 'title';
     titleInput.name = 'title';
     titleInput.value = postData.data.title;
-    titleLabel.appendChild(titleInput); // Nest input inside label
+    titleLabel.appendChild(titleInput); 
 
     const imageLabel = document.createElement('label');
     imageLabel.textContent = 'Image URL:';
@@ -26,7 +26,7 @@ export async function createForm(name, id ) {
     imageInput.id = 'image';
     imageInput.name = 'image';
     imageInput.value = postData.data.media.url;
-    imageLabel.appendChild(imageInput); // Nest input inside label
+    imageLabel.appendChild(imageInput); 
 
     const bodyLabel = document.createElement('label');
     bodyLabel.textContent = 'Body:';
@@ -34,7 +34,7 @@ export async function createForm(name, id ) {
     bodyTextarea.id = 'body';
     bodyTextarea.name = 'body';
     bodyTextarea.value = postData.data.body;
-    bodyLabel.appendChild(bodyTextarea); // Nest textarea inside label
+    bodyLabel.appendChild(bodyTextarea); 
 
 
     const buttonsContainer = document.createElement("div");
@@ -44,10 +44,6 @@ export async function createForm(name, id ) {
     submitButton.className = 'blue-btn';
     submitButton.textContent = 'Save Changes';
     
-
-
-
-
     form.appendChild(titleLabel);
     form.appendChild(imageLabel);
     form.appendChild(bodyLabel);
@@ -58,7 +54,18 @@ export async function createForm(name, id ) {
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault(); 
-        await updatePost(name, id);
+        const updatedTitle = titleInput.value;
+        const updatedImageURL = imageInput.value;
+        const updatedBody = bodyTextarea.value;
+        console.log('Updated Title:', updatedTitle);
+     
+
+     
+        if (updatedTitle && updatedImageURL && updatedBody) {
+            await updatePost(name, id, updatedTitle, updatedImageURL, updatedBody);
+        } else {
+            alert('Please fill in all fields');
+        }
     });
 
     return form;

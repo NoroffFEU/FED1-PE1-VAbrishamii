@@ -1,91 +1,105 @@
 
 import { createCarouselInner, createNextButton, createPrevButton } from "../pages/index.mjs";
 import { Base_URL, Blog_endpoint } from "./api.mjs";
-import { calculatePagination } from "./pagination.mjs";
+
 
 let currentPage = 1;
-const postsPerPage = 3 ;
+let latestPosts = [];
 
-export async function createCarousel(){
+export async function createCarousel() {
     const main = document.querySelector('main');
 
     const carousel = document.createElement('div');
     carousel.id = 'carousel';
-    carousel.classList.add ('carousel');
+    carousel.classList.add('carousel');
 
     carousel.appendChild(createPrevButton());
     carousel.appendChild(createCarouselInner());
     carousel.appendChild(createNextButton());
 
     main.appendChild(carousel);
-    await carouselPost(currentPage);
+    await fetchLatestPosts();
 
-    document.getElementById('nextBtn').addEventListener('click', async() =>{
+    document.getElementById('nextBtn').addEventListener('click', async () => {
         currentPage++;
-        await carouselPost(currentPage);
-    });
-    document.getElementById('prevBtn').addEventListener('click' , async() =>{
-        currentPage--;
-        if (currentPage<1){
+        if (currentPage > latestPosts.length) {
             currentPage = 1;
         }
-        await carouselPost(currentPage);
+        updateCarousel();
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', async () => {
+        currentPage--;
+        if (currentPage < 1) {
+            currentPage = latestPosts.length;
+        }
+        updateCarousel();
     });
 }
 
-async function carouselPost(page){
-    // const totalPosts = 100;
-    // const {totalPages, currentPage, itemsPerPage } = calculatePagination(totalPosts,postsPerPage,page);
-    
-    const userInfoString = localStorage.getItem('userInfo');
-    const userInfo = JSON.parse(userInfoString);
-    console.log('userinfo', userInfo);
-    const name = userInfo.data.name;
-    console.log('name', name);
-    try{
-        const url = `${Base_URL}${Blog_endpoint.POST_BY_USER(name)}?limit=${postsPerPage}&page=${page}`;
+async function fetchLatestPosts() {
+    let name = 'Vahideh';
+       
+    try {
+        const url = `${Base_URL}${Blog_endpoint.POST_BY_USER(name)}`;
+        console.log('url',url);
         const response = await fetch(url);
-        if (!response.ok){
-            throw new Error ('Error fetching posts: ${response.statusText}')
+        console.log('response', response);
+        if (!response.ok) {
+            throw new Error(`Error fetching posts: ${response.statusText}`);
         }
 
         const responseData = await response.json();
-        console.log('resposnedata', responseData);
+        console.log('reposnse', responseData);
+
         const posts = responseData.data || responseData;
+        console.log('post', posts);
 
-        totalPages = Math.ceil(responseData.total / postsPerPage);
+        posts.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateB - dateA;
+        });
 
-        currentPage = page > totalPages ? 1 : page;
-
-        // Determine which posts to display based on currentPage
-        const startIndex = (currentPage - 1) * postsPerPage;
-        const endIndex = startIndex + postsPerPage;
-        let displayedPosts = posts.slice(startIndex, endIndex);
-
-        // If the displayed posts are empty and currentPage is not 1, reset currentPage to 1
-        if (displayedPosts.length === 0 && currentPage !== 1) {
-            currentPage = 1;
-            displayedPosts = posts.slice(0, postsPerPage);
-        }
-        updateCarousel(displayedPosts);
-    }catch (error){
+        latestPosts = posts.slice(0, 3);
+        updateCarousel();
+    } catch (error) {
         console.log('error fetching posts', error);
     }
 }
 
-function updateCarousel(posts) {
+function updateCarousel() {
     const carouselInner = document.getElementById('carouselInner');
     carouselInner.innerHTML = '';
-    posts.forEach(post => {
-        const postElement = document.createElement('div');
-        postElement.classList.add('carousel-item');
-        postElement.innerHTML = `
-        <img src="${post.media.url}" alt="${post.title}">
-        <h3>${post.title}</h3>
-        <a href="#" class="read-more" data-id="${post.id}">Read more</a>
-        
-        `
-        carouselInner.appendChild(postElement);
-    });
 
+    if (latestPosts.length === 0) {
+        carouselInner.innerHTML = '<p>No posts available</p>';
+        return;
+    }
+
+    const post = latestPosts[currentPage - 1];
+    const postElement = document.createElement('div');
+    postElement.classList.add('carousel-item');
+    postElement.innerHTML = `
+        <img src="${post.media.url}" alt="${post.title}">
+        <div class="carousel-item-content">
+            <h3>${post.title}</h3>
+            <a href="#" class="read-more" postId="${post.id}" postName="${post.author.name}">Read More</a>
+        </div>
+
+    `;
+    carouselInner.appendChild(postElement);
+
+    const readMoreLink = postElement.querySelector('.read-more');
+    readMoreLink.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const postId = post.id;
+        console.log('postid', postId);
+
+        const postName = post.author.name;
+        console.log('postname', postName);
+        window.location.href = `detailspost.html?id=${postId}&name=${postName}`;
+    });
 }
+
+

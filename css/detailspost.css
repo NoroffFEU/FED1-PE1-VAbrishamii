@@ -1,0 +1,22 @@
+.single-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem auto;
+}
+.single-post p{
+    width: 80%;
+    font-size: 2rem;
+}
+.single-post img{
+  aspect-ratio: 4/2;
+  border-radius: 10px;
+  width: 80%;
+}
+.single-post i{
+    cursor: pointer;
+    font-size: 3rem;
+    
+
+}

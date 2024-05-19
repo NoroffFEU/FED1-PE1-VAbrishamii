@@ -11,34 +11,26 @@ async function main() {
     const postId = urlParams.get('id');
     const postName = urlParams.get('name');
 
-  
-
     createForm(postName,postId);
-    await updatePost(postName, postId);
     createFooter();
     
    
 }
 
 
-export async function updatePost(name,id){
-
-    const postData = await singlePost(name,id);
-
-    const title = postData.data.title;
-    const body = postData.data.body;
-    const imageURL = postData.data.media.url;
-  
+export async function updatePost(name,id, title,imageURL,body){
 
     const formData = {
         title: title,
-        image: imageURL,
+        media: {url:imageURL },
         body: body,
     };
+    console.log('formdata', formData);
 
     try{
         const accessToken = localStorage.getItem("token");
         const updateUrl = `${Base_URL}${Blog_endpoint.POST_BY_ID(name, id)}`;
+        console.log('updateurl', updateUrl);
         const response = await fetch (updateUrl,{
             method: 'PUT',
             headers:{
@@ -52,7 +44,10 @@ export async function updatePost(name,id){
         if (!response.ok){
             throw new Error ('Failed to update post');
         }
-        // alert('Post updated successfully!');
+ 
+        alert('Post updated successfully!');
+        window.location.href = `../post/edit.html?id=${id}&name=${name}`;
+
     }catch(error){
         console.log('Error updating post:', error);
         alert('Failed to update post. Please try again.');

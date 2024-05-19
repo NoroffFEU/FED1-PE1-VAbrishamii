@@ -35,7 +35,7 @@ export function editPostPage() {
 
             editIcon.addEventListener('click', ()=>{
                 const postId = post.id;
-                const postName = post.author.name; // Extract the name from post.author
+                const postName = post.author.name;
                 console.log(`Navigating to update page for post id: ${postId} and name: ${postName}`); 
                 window.location.href = `../post/update.html?id=${postId}&name=${postName}`;
             });
@@ -46,7 +46,7 @@ export function editPostPage() {
             trashIcon.addEventListener('click', () => {
                 const confirmDelete = confirm('Are you sure you want to delete this post?');
                 if (confirmDelete) {
-                    deletePost(post.author.name, post.id); // Call your delete function here
+                    deletePost(post.author.name, post.id); 
                 }
             });
 

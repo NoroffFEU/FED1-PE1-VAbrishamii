@@ -19,10 +19,6 @@ iconDiv.classList.add("icon");
 const iconList = document.createElement("ul");
 iconList.classList.add("icon-item");
 
-const addIcon = document.createElement('li');
-const addIconContent = document.createElement('i');
-addIconContent.classList.add("fa-solid", "fa-plus", "add-icon");
-addIcon.appendChild(addIconContent);
 
 const homeIcon = document.createElement("li");
 const homeIconContent = document.createElement("i");
@@ -39,15 +35,11 @@ const searchIconContent = document.createElement("i");
 searchIconContent.classList.add("fa-solid" , "fa-magnifying-glass");
 searchIcon.appendChild(searchIconContent);
 
-
-
-// Append icons to each other and to the document
-addIcon.appendChild(addIconContent);
 homeIcon.appendChild(homeIconContent);
 userIcon.appendChild(userIconContent);
 searchIcon.appendChild(searchIconContent);
 
-iconList.appendChild(addIcon);
+
 iconList.appendChild(homeIcon);
 iconList.appendChild(userIcon);
 iconList.appendChild(searchIcon);
@@ -58,13 +50,20 @@ if (isAdmin()) {
   editIconContent.classList.add("fa-solid", "fa-edit");
   editIcon.appendChild(editIconContent);
 
-  // Append the edit icon to the icon list
-  iconList.appendChild(editIcon);
+  const addIcon = document.createElement('li');
+  const addIconContent = document.createElement('i');
+  addIconContent.classList.add("fa-solid", "fa-plus", "add-icon");
+  addIcon.appendChild(addIconContent);
 
-  // Add event listener for the edit icon
+  iconList.appendChild(editIcon);
+  iconList.appendChild(addIcon);
+
   editIcon.addEventListener('click', function() {
     window.location.href = '../post/edit.html';
   });
+  addIcon.addEventListener('click', function addPost(){
+    window.location.href = "../post/index.html";
+  })
 }
 
 
@@ -79,10 +78,6 @@ function LoginPage() {
 }
 userIcon.addEventListener("click", LoginPage);
 
-function addPost(){
-  window.location.href = "../post/index.html";
-}
-addIcon.addEventListener('click', addPost);
 
 homeIcon.addEventListener('click', function() {
   window.location.href = '../index.html';

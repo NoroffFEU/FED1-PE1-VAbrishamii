@@ -1,9 +1,11 @@
 import { createCarousel } from "../modules/carousel.mjs";
+import { createFooter } from "./footer.mjs";
 import { createNavbar } from "./navbar.mjs";
 
 function makePage(){
     createNavbar('container');
    createCarousel();
+   createFooter();
 
 }
 
