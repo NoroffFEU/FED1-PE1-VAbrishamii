@@ -30,6 +30,9 @@ export function editPostPage() {
             title.textContent = post.title;
             title.id = 'title';
 
+            // const iconContainer = document.createElement('div');
+            // iconContainer.classList.add('icon-container');
+
             const editIcon = document.createElement('i');
             editIcon.className = 'fa-regular fa-pen-to-square';
 
@@ -50,12 +53,20 @@ export function editPostPage() {
                 }
             });
 
+            // iconContainer.appendChild(editIcon);
+            // iconContainer.appendChild(trashIcon);
+
             postDiv.appendChild(image);
             postDiv.appendChild(title);
-            postDiv.appendChild(editIcon);
-            postDiv.appendChild(trashIcon);
+            // postDiv.appendChild(iconContainer);
 
             container.appendChild(postDiv);
+            
+            const iconContainer = document.createElement('div');
+            iconContainer.classList.add('icon-container'); // Add a class for styling
+            iconContainer.appendChild(editIcon);
+            iconContainer.appendChild(trashIcon);
+            postDiv.appendChild(iconContainer);
         });
     }
 

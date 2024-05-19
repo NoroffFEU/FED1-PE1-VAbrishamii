@@ -1,6 +1,6 @@
 .post{
     display: flex;
-    /* justify-content: center; */
+    justify-content: space-between;
     align-items: center;
     width: 50%;
     margin: 1.5rem auto;
@@ -15,8 +15,10 @@
     flex-direction: column;
     align-items: center;
     margin: 2rem auto;
-    /* border-radius: 10px; */
 
+}
+.icon-container{
+    display: flex;
 }
 .post img{
     width: 5rem;
@@ -28,10 +30,32 @@
 }
 .post h2{
     font-size: 1.8rem;
+    flex-grow: 1; 
+    margin: 0;
     
 }
 .post i{
     margin: 0 3rem;
-
-
+}
+@media (max-width:768px) {
+    .post{
+        width: 60%;
+    }
+    .post h2{
+        font-size: 1.3rem;
+    }
+    .post i{
+        margin: 0 1.5rem
+    }
+}
+@media (max-width:425px) {
+    .post{
+        width: 70%;
+    }
+    .post h2{
+        font-size: 1rem;
+    }
+    .post i{
+        margin: 0 1rem
+    }
 }
