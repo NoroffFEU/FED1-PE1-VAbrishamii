@@ -1,4 +1,6 @@
-.thumbnail{
+
+#postGrid{
+    container-type: inline-size;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
@@ -7,7 +9,40 @@
     margin: 0 auto;
     margin-top: 6rem;
 }
+/* Container query for larger containers */
+@container (min-width: 1200px) {
+    #postGrid {
+        grid-template-columns: repeat(6, 1fr); /* 6 columns for very large containers */
+    }
+}
 
+/* Container query for medium to large containers */
+@container (min-width: 900px) and (max-width: 1199px) {
+    #postGrid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns for large containers */
+    }
+}
+
+/* Container query for medium containers */
+@container (min-width: 600px) and (max-width: 899px) {
+    #postGrid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for medium containers */
+    }
+}
+
+/* Container query for smaller containers */
+@container (max-width: 599px) {
+    #postGrid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for small containers */
+    }
+}
+
+/* Container query for very small containers */
+@container (max-width: 399px) {
+    #postGrid {
+        grid-template-columns: repeat(1, 1fr); /* 1 column for very small containers */
+    }
+}
 .grid-item {
     display: flex;
     flex-direction: column;
@@ -28,6 +63,7 @@
     width: 100%;
     height: 500px;
    object-fit: cover;
+
   
 }
 .grid-item h3 {
@@ -58,6 +94,7 @@
 }
 
 .pagination-link:hover {
-    background-color: var(--black);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 
