@@ -15,11 +15,6 @@ export async function createFooter(){
     emailParagraph.textContent = 'Contact Us: trip@trip.no';
     contactDiv.appendChild(emailParagraph);
 
-
-    const phoneParagraph = document.createElement('p');
-    phoneParagraph.textContent = 'Tel: 9999999';
-    contactDiv.appendChild(phoneParagraph);
-
     const iconDiv = document.createElement('div');
     iconDiv.classList.add('icon');
 

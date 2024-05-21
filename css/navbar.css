@@ -31,6 +31,20 @@
     margin: 0 15px;
     cursor: pointer;
 }
+.hide{
+    display: none;
+}
+#userDisplay{
+    border: 3px solid var(--dark-blue);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 @media (max-width: 768px) {
     .logo{
         width: 10vw;

@@ -43,6 +43,9 @@ export async function loginUser(email, password) {
             throw new Error('Access token not found in response');
         }
 
+        const userName = responseData.data.name;
+        localStorage.setItem('userName', userName);
+
         console.log("Login successful. Access token:", token);
         return token;
 
@@ -60,6 +63,8 @@ export function checkIfAdmin(username, password){
         return false;
     }
 }
+
+
 
 // Add event listener to handle form submission
 const loginForm = createLoginForm();
@@ -100,6 +105,7 @@ loginForm.addEventListener('submit', async function (event) {
 //Append logo and login form to the container
 const container = document.getElementById('container');
 container.appendChild(loginForm);
+
 
 
 

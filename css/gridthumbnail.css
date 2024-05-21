@@ -30,8 +30,34 @@
    object-fit: cover;
   
 }
-
 .grid-item h3 {
     margin: 10px;
     font-size: 18px;
 }
+#pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 200px;
+    height: 300px;
+}
+.pagination-link {
+    margin: 0 5px;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+.pagination-link.active {
+    background-color: var(--light-gray);
+    color: var(--black);
+    border: 1px solid #007bff;
+}
+
+.pagination-link:hover {
+    background-color: var(--black);
+}
+

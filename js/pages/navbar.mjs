@@ -76,7 +76,26 @@ container.appendChild(mainContent);
 function LoginPage() {
   window.location.href = "../account/login.html";
 }
-userIcon.addEventListener("click", LoginPage);
+
+const userName = localStorage.getItem('userName');
+if (userName) {
+    const firstLetter = userName.charAt(0).toUpperCase();
+    const userDisplayElement = document.createElement('div');
+    userDisplayElement.id = 'userDisplay';
+    userDisplayElement.textContent = firstLetter;
+    iconDiv.appendChild(userDisplayElement);
+    userIcon.classList.add('hide');
+    userDisplayElement.addEventListener('click', function() {
+     
+      window.location.href = '../account/login.html';
+    });
+} else {
+   
+    userIcon.addEventListener("click", LoginPage);
+}
+
+
+// userIcon.addEventListener("click", LoginPage);
 
 
 homeIcon.addEventListener('click', function() {
@@ -88,6 +107,6 @@ function isAdmin() {
 }
 
 
-
 }
+
 

@@ -1,3 +1,11 @@
+/* @keyframes slide {
+    0% { transform: translateX(0); }
+    33.33% { transform: translateX(0); }
+    38.33% { transform: translateX(-100%); }
+    71.66% { transform: translateX(-100%); }
+    76.66% { transform: translateX(-200%); }
+    100% { transform: translateX(-200%); }
+} */
 .carousel {
     display: flex;
     justify-content: center;
@@ -6,7 +14,7 @@
     margin: 10px auto;
     overflow: hidden;
     width: 90%; 
-    height: 80%; 
+    height: 70%; 
     border-radius: 10px;
 }
 
@@ -15,16 +23,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 300%;
     height: 100%;
     overflow: hidden;
     position: relative;
+    animation: slide 10s infinite;
 }
 
 
 .carousel-item {
     position: relative;
-    min-width: 100%;
+    flex: 0 0 100%;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -37,9 +47,9 @@
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    aspect-ratio: 1/1;
+    aspect-ratio: 2/1;
     border-radius: 5px;
-
+    /* object-fit: cover; */
 }
 .carousel-item-content{
     position: absolute;
