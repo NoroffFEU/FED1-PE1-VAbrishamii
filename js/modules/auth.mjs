@@ -27,10 +27,9 @@ export async function checkLoggedIn () {
       if (response.ok) {
         const userData = await response.json();
         console.log(userData.name)
-        return userData.name; // Assuming the API returns the user's name
+        return userData.name; 
       
       } else {
-        // Handle error response
         console.error("Failed to fetch user data");
         return null;
       }
