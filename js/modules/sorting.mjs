@@ -1,75 +1,37 @@
-import { Base_URL, Blog_endpoint } from "./api.mjs";
-import { createSortDropdown } from "../pages/index.mjs";
+import { displayPostGrid } from "../pages/index.mjs";
 
+export async function createSortDropdown(id, onChangeHandler) {
+    const options = [
+        { value: 'createdAt', text: 'Newest' },
+        { value: '-createdAt', text: 'Oldest' }
+    ];
 
-async function fetchSortedData() {
-    const sortField = document.getElementById('sortField').value;
-    const sortOrder = document.getElementById('sortOrder').value;
-    const blogPostUrl = `${Base_URL}${Blog_endpoint.POST_BY_USER('Vahideh')}?sort=${sortField}&sortOrder=${sortOrder}`;
+    const select = document.createElement('select');
+    select.id = id;
 
-    try {
-        const response = await fetch(blogPostUrl);
-        const data = await response.json();
-        displayBlogPosts(data);
-    } catch (error) {
-        console.error('Error fetching sorted posts:', error);
-    }
-}
-
-// Function to display blog posts
-function displayBlogPosts(posts) {
-    const container = document.createElement('div');
-    container.id = 'blogPosts';
-    container.innerHTML = '';
-
-    posts.forEach(post => {
-        const postElement = document.createElement('div');
-        postElement.className = 'blogPost';
-        postElement.innerHTML = `
-            <h2>${post.title}</h2>
-            <p>${post.name}</p>
-            <p>${post.date}</p>
-        `;
-        container.appendChild(postElement);
+    options.forEach(optionData => {
+        const option = document.createElement('option');
+        option.value = optionData.value;
+        option.textContent = optionData.text;
+        select.appendChild(option);
     });
 
-    const main = document.querySelector('main');
-    main.innerHTML = ''; // Clear existing content in main
-    main.appendChild(container);
+    select.addEventListener('change', (event) => {
+        const sortBy = event.target.value;
+        console.log('sortby',sortBy)
+        const sortOrder = sortBy.startsWith('-') ? 'desc' : 'asc';
+        onChangeHandler(sortBy.replace('-', ''), sortOrder); // Adjust for '-' in front of oldest
+    });
+
+    return select;
 }
 
-// Function to initialize the dropdowns and load the default posts
-async function initializeControls() {
-    // Fetch available sort fields from the API
-    try {
-        const response = await fetch('/api/sort-fields');
-        const fields = await response.json();
-
-        // Create the controls container
-        const controls = document.createElement('div');
-        controls.id = 'controls';
-
-        // Create and append the sort field dropdown
-        const sortFieldOptions = fields.map(field => ({ value: field, text: field.charAt(0).toUpperCase() + field.slice(1) }));
-        const sortFieldSelect = createSortDropdown('sortField', sortFieldOptions, fetchSortedData);
-        controls.appendChild(sortFieldSelect);
-
-        // Create and append the sort order dropdown
-        const sortOrderOptions = [
-            { value: 'asc', text: 'Ascending' },
-            { value: 'desc', text: 'Descending' }
-        ];
-        const sortOrderSelect = createSortDropdown('sortOrder', sortOrderOptions, fetchSortedData);
-        controls.appendChild(sortOrderSelect);
-
-        // Append the controls to the main element
-        const main = document.querySelector('main');
-        main.appendChild(controls);
-
-        // Fetch and display the default sorted data
-        await fetchSortedData();
-    } catch (error) {
-        console.error('Error fetching sort fields:', error);
-    }
-    document.addEventListener('DOMContentLoaded', initializeControls);
+export function initializeSortDropdown() {
+    createSortDropdown('sortDropdown', (sort, sortOrder) => displayPostGrid(1, sort, sortOrder))
+        .then(sortDropdown => {
+            const main = document.querySelector('main');
+            const carousel = document.getElementById('carousel');
+            main.insertBefore(sortDropdown, carousel.nextSibling);
+        })
+        .catch(error => console.error('Error creating sort dropdown:', error));
 }
