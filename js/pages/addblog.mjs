@@ -7,7 +7,6 @@ createFooter
 
 
 
-// Function to create the blog post form
 const createBlogForm = () => {
     const main = document.querySelector("main");
 

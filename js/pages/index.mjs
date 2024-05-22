@@ -26,11 +26,38 @@ export function createCarouselInner() {
     carouselInner.id = 'carouselInner';
     return carouselInner;
 }
+
+export async function createSortDropdown(id, onChangeHandler) {
+    const options = [
+        { value: 'date', text: 'Newest' },
+        { value: '-date', text: 'Oldest' }
+    ];
+
+    const select = document.createElement('select');
+    select.id = id;
+
+    options.forEach(optionData => {
+        const option = document.createElement('option');
+        option.value = optionData.value;
+        option.textContent = optionData.text;
+        select.appendChild(option);
+    });
+
+    select.addEventListener('change', (event) => {
+        const sortBy = event.target.value;
+        console.log('sotrby', sortBy)
+        onChangeHandler(sortBy);
+    });
+
+    return select;
+}
+
 //grid thumbnail
 const postsPerPage = 12; 
 let totalPosts = 0; 
 
-async function displayPostGrid(pageNumber = 1) {
+
+export async function displayPostGrid(pageNumber = 1) {
     const postsData = await allPost();
     console.log(`Fetched posts:`, postsData);
 
@@ -66,6 +93,7 @@ async function displayPostGrid(pageNumber = 1) {
 }
 
 
+
 export function createPostGrid() {
     const main = document.querySelector('main');
 
@@ -79,6 +107,11 @@ export function createPostGrid() {
     main.appendChild(paginationContainer);
 }
 
+// (async function() {
+//     const sortDropdown = await createSortDropdown('sortDropdown', (sortBy) => displayPostGrid(1, sortBy));
+//     const main = document.querySelector('main');
+//     main.insertBefore(sortDropdown,document.getElementById('postGrid'));
+// })();
 
 async function makePage() {
     createNavbar('container');
@@ -86,6 +119,7 @@ async function makePage() {
     createPostGrid();
     await displayPostGrid(1); 
     createFooter();
+  
 }
 
 makePage();
