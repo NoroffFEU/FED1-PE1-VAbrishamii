@@ -7,7 +7,7 @@
     margin: 10px auto;
     overflow: hidden;
     width: 90%; 
-    height: 70%;
+    height: 80%;
     border-radius: 10px;
    
 }
@@ -41,8 +41,9 @@
     width: 100%; 
     height: 100%;
     border-radius: 10px;
-    aspect-ratio: 2/1;
+    aspect-ratio: 16/9;
     object-fit: cover;
+    opacity: 0.9;
     
 }
 .carousel-item-content{
@@ -61,7 +62,7 @@
 .carousel-item-content h3 {
     margin: 0;
     font-size: 3rem;
-    color: var(--black);
+    color: var(--white);
 }
 
 .carousel-item-content a {
@@ -70,13 +71,13 @@
     padding: 5px 12px;
     border-radius: 10px;
     text-decoration: none;
-    color: var(--black);
+    color: var(--white);
     font-size: 2rem;
     cursor: pointer;
 }
-.carousel-item-content a:hover{
+/* .carousel-item-content a:hover{
     color: var(--white);
-}
+} */
 
 
 .carousel-btn {
