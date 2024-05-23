@@ -158,7 +158,7 @@ async function makePage() {
     await displayPostGrid(1); 
     createFooter();
     initializeSortDropdown(); 
-
+}
 makePage();
 
 

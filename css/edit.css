@@ -50,7 +50,7 @@
 }
 @media (max-width:425px) {
     .post{
-        width: 70%;
+        width: 75%;
     }
     .post h2{
         font-size: 1rem;

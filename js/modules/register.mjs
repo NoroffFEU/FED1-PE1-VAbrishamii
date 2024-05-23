@@ -67,6 +67,7 @@ signupForm.addEventListener('submit', async function(event){
         
         const responseData = await response.json();
         console.log("Response Data:", responseData);
+        alert('Register successfully');
         window.location.href = './login.html'
     } catch (error) {
         if (error.message.includes('email')) {

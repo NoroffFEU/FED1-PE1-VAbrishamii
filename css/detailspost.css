@@ -7,7 +7,7 @@
 }
 .single-post p{
     width: 80%;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 .single-post img{
   aspect-ratio: 4/2;
@@ -19,4 +19,10 @@
     font-size: 3rem;
     
 
+}
+@media (max-width:425px) {
+    .single-post h1{
+     width: 80%;
+    }
+    
 }

@@ -15,7 +15,6 @@ import { createLogo } from "../modules/logo.mjs";
   const signupMessage = document.createElement("p");
   signupMessage.id = "signup-message";
 
-  // Append form and message to signup container
   signupContainer.appendChild(signupForm);
   signupContainer.appendChild(signupMessage);
   container.appendChild(signupContainer);
@@ -41,14 +40,11 @@ import { createLogo } from "../modules/logo.mjs";
     signupForm.appendChild(div);
   }
 
-  // Create form elements for name, last name, email, password, and confirmation password
+  
   createFormElement("text", "name", "Name *");
-  // createFormElement("text", "last-name", "Last Name *");
   createFormElement("email", "email", "Email *");
   createFormElement("password", "password", "Password *");
-  // createFormElement("password", "confirm-password", "Confirm Password *");
 
-  // Create submit button
   const submitButton = document.createElement("button");
   submitButton.classList.add("btn", "signup-btn");
   submitButton.type = "submit";
