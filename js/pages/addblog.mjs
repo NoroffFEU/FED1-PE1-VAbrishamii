@@ -42,6 +42,14 @@ const createBlogForm = () => {
     const textInput = document.createElement("textarea");
     textInput.id = "text";
     textInput.name = "text";
+
+    const tagsLabel = document.createElement("label");
+    tagsLabel.innerText = "Tags:";
+    const tagsInput = document.createElement("input");
+    tagsInput.type = "text";
+    tagsInput.id = "tags";
+    tagsInput.name = "tags";
+    tagsInput.placeholder = "Enter tags separated by commas";
   
     // Create submit button
     const buttonsContainer = document.createElement("div");
@@ -57,7 +65,7 @@ const createBlogForm = () => {
     cancleButton.innerText = "Decline";
   
 
-    form.append(titleLabel, titleInput,  imageLabel, imageInput, textLabel, textInput, buttonsContainer);
+    form.append(titleLabel, titleInput,  imageLabel, imageInput, textLabel, textInput,tagsLabel, tagsInput, buttonsContainer);
     buttonsContainer.appendChild(submitButton);
     buttonsContainer.appendChild(cancleButton);
     
@@ -70,9 +78,11 @@ const createBlogForm = () => {
       const title = titleInput.value;
       const text = textInput.value;
       const image = imageInput.value;
+      const tags = tagsInput.value.split(',').map(tag => tag.trim()); // Split tags by commas and trim whitespace
+
   
       // Check if any field is empty
-      if (!title || !text || !image) {
+      if (!title || !text || !image || !tags) {
         alert('Please fill in all fields.');
         return;
       }
@@ -89,6 +99,7 @@ const createBlogForm = () => {
         url: image,
         alt: 'Blog image'
       },
+      tags,
       author: name
     };
     
@@ -125,6 +136,7 @@ const createBlogForm = () => {
         titleInput.value = '';
         textInput.value = '';
         imageInput.value = '';
+        tagsInput.value = '';
       } else {
         
         alert('Failed to create blog post. Please try again later.');
@@ -141,6 +153,7 @@ const createBlogForm = () => {
     titleInput.value = '';
     textInput.value = '';
     imageInput.value = '';
+    tagsInput.value = '';
   })
 
 

@@ -1,4 +1,12 @@
-
+.home-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-style: italic;
+    margin: 0 auto;
+    border-radius: 30px;
+}
 .carousel {
     display: flex;
     justify-content: center;

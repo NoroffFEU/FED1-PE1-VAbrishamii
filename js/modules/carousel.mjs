@@ -9,6 +9,12 @@ let latestPosts = [];
 export async function createCarousel() {
     const main = document.querySelector('main');
 
+    const title = document.createElement('div');
+    title.classList.add('home-title');
+    title.innerHTML="Recent Posts";
+    main.appendChild(title);
+ 
+
     const carousel = document.createElement('div');
     carousel.id = 'carousel';
     carousel.classList.add('carousel');
@@ -18,6 +24,7 @@ export async function createCarousel() {
     carousel.appendChild(createNextButton());
 
     main.appendChild(carousel);
+    
     await fetchLatestPosts();
 
     document.getElementById('nextBtn').addEventListener('click', async () => {

@@ -1,6 +1,5 @@
 import { Base_URL, Blog_endpoint } from "./api.mjs";
-import { createForm } from "../pages/update.mjs";
-import { singlePost } from "./singlepost.mjs";
+import { createForm } from "../pages/update.mjs";;
 import { createNavbar } from "../pages/navbar.mjs";
 import { createFooter } from "../pages/footer.mjs";
 

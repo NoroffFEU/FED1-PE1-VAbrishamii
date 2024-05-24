@@ -1,0 +1,26 @@
+.filter-container{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    margin-left: 7rem;
+   
+}
+.filter-icon{
+    font-size: 3rem;
+    color: var(--dark-blue);
+    padding: 2rem;
+    position: relative;
+    margin-top: 3rem;
+   
+}
+.filter-dropdown{
+    position: absolute;
+    margin-top: 7rem;
+    margin-left: 0;
+   
+}
+.filter-dropdown ul li{
+    font-size: 1.5rem;
+    padding: 3px;
+
+}
