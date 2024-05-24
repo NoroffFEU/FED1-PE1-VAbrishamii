@@ -53,17 +53,12 @@ export function editPostPage() {
                 }
             });
 
-            // iconContainer.appendChild(editIcon);
-            // iconContainer.appendChild(trashIcon);
-
             postDiv.appendChild(image);
             postDiv.appendChild(title);
-            // postDiv.appendChild(iconContainer);
-
             container.appendChild(postDiv);
             
             const iconContainer = document.createElement('div');
-            iconContainer.classList.add('icon-container'); // Add a class for styling
+            iconContainer.classList.add('icon-container'); 
             iconContainer.appendChild(editIcon);
             iconContainer.appendChild(trashIcon);
             postDiv.appendChild(iconContainer);

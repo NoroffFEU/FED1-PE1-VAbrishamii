@@ -36,6 +36,16 @@ export async function createForm(name, id ) {
     bodyTextarea.value = postData.data.body;
     bodyLabel.appendChild(bodyTextarea); 
 
+    const tagsLabel = document.createElement("label");
+    tagsLabel.innerText = "Tags:";
+    const tagsInput = document.createElement("input");
+    tagsInput.type = "text";
+    tagsInput.id = "tags";
+    tagsInput.name = "tags";
+    tagsInput.value = postData.data.tags;
+    tagsInput.placeholder = "Enter tags separated by commas";
+    tagsLabel.appendChild(tagsInput);
+
 
     const buttonsContainer = document.createElement("div");
     buttonsContainer.className = 'buttonDiv';
@@ -47,6 +57,7 @@ export async function createForm(name, id ) {
     form.appendChild(titleLabel);
     form.appendChild(imageLabel);
     form.appendChild(bodyLabel);
+    form.appendChild(tagsLabel);
     form.appendChild(submitButton);
    
     const mainElement = document.querySelector('main');
@@ -57,12 +68,13 @@ export async function createForm(name, id ) {
         const updatedTitle = titleInput.value;
         const updatedImageURL = imageInput.value;
         const updatedBody = bodyTextarea.value;
+        const updatedTags = tagsInput.value;
         console.log('Updated Title:', updatedTitle);
      
 
      
         if (updatedTitle && updatedImageURL && updatedBody) {
-            await updatePost(name, id, updatedTitle, updatedImageURL, updatedBody);
+            await updatePost(name, id, updatedTitle, updatedImageURL, updatedBody, updatedTags);
         } else {
             alert('Please fill in all fields');
         }
