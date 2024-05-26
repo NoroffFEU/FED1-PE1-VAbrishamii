@@ -3,6 +3,7 @@
     width: 90%;
     justify-content: space-between;
     margin-left: 7rem;
+
    
 }
 .filter-icon{
@@ -17,10 +18,11 @@
     position: absolute;
     margin-top: 7rem;
     margin-left: 0;
-   
+
 }
 .filter-dropdown ul li{
     font-size: 1.5rem;
     padding: 3px;
+
 
 }

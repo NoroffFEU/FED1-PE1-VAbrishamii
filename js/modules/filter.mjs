@@ -18,7 +18,7 @@ export function filterIcon() {
 
     const filterList = document.createElement('ul');
     filterList.classList.add('filter-list');
-    const filters = ['All', 'Historic', 'Nature', 'Culture'];
+    const filters = ['All', 'Historic', 'Culture'];
     filters.forEach(filter => {
         const listItem = document.createElement('li');
         const link = document.createElement('a');

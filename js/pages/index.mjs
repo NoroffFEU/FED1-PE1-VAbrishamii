@@ -74,7 +74,9 @@ export async function displayPostGrid(pageNumber = 1, postsData, filter) {
     });
 
     const totalPages = Math.ceil(totalPosts / postsPerPage);
-    displayPagination(totalPages, pageNumber, displayPostGrid.bind(null, null, postsData, filter));
+    displayPagination(totalPages, pageNumber, (newPage) => {
+        displayPostGrid(newPage, postsData, filter);
+    });
 
 }
 

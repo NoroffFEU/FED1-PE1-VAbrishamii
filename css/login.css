@@ -5,7 +5,7 @@ body{
 #container {
   background-color: var(--white);
   width: 40%;
-  height: 60%;
+  height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
