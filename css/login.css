@@ -88,7 +88,11 @@ body{
 
     }
     .login-form input{
-        width: 50vw;
+        width: 60vw;
+    }
+    .login-form img{
+        width: 5wv;
+        margin: 6px auto;
     }
     
 }
