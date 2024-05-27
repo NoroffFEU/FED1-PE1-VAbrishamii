@@ -3,7 +3,8 @@ import { createCarousel } from "../modules/carousel.mjs";
 import { createFooter } from "./footer.mjs";
 import { createNavbar } from "./navbar.mjs";
 import { displayPagination } from "../modules/pagination.mjs";
-import { filterIcon, filterPosts} from "../modules/filter.mjs";
+import { filterIcon } from "../modules/filter.mjs";
+import { pageLoading, removeLoader } from "../modules/loader.mjs";
 
 
 //carousel elements
@@ -95,12 +96,13 @@ export async function createPostGrid() {
 
 async function makePage() {
     createNavbar('container');
+    pageLoading();
     createCarousel();
     filterIcon();
     createPostGrid();
     displayPostGrid(1); 
     createFooter();
-  
+    setTimeout (removeLoader,200) 
 }
 
 makePage();

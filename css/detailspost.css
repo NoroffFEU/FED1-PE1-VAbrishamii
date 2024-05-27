@@ -13,6 +13,7 @@
   aspect-ratio: 4/2;
   border-radius: 10px;
   width: 80%;
+  object-fit: cover;
 }
 .single-post i{
     cursor: pointer;

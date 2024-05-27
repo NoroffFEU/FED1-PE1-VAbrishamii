@@ -30,19 +30,19 @@ const userIconContent = document.createElement("i");
 userIconContent.classList.add("fa-solid", "fa-user");
 userIcon.appendChild(userIconContent);
 
-const searchIcon = document.createElement("li");
-const searchIconContent = document.createElement("i");
-searchIconContent.classList.add("fa-solid" , "fa-magnifying-glass");
-searchIcon.appendChild(searchIconContent);
+// const searchIcon = document.createElement("li");
+// const searchIconContent = document.createElement("i");
+// searchIconContent.classList.add("fa-solid" , "fa-magnifying-glass");
+// searchIcon.appendChild(searchIconContent);
 
 homeIcon.appendChild(homeIconContent);
 userIcon.appendChild(userIconContent);
-searchIcon.appendChild(searchIconContent);
+// searchIcon.appendChild(searchIconContent);
 
 
 iconList.appendChild(homeIcon);
 iconList.appendChild(userIcon);
-iconList.appendChild(searchIcon);
+// iconList.appendChild(searchIcon);
 
 if (isAdmin()) {
   const editIcon = document.createElement('li');
