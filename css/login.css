@@ -5,7 +5,7 @@ body{
 #container {
   background-color: var(--white);
   width: 40%;
-  height: 70%;
+  height: 75%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,20 +41,20 @@ body{
 
 }
 .login-form button{
-    width: 15vw;
-    margin: 1.5rem auto;
+    width: 10vw;
+    margin: 1.2rem auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s; 
     
 }
 .btn-account{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--dark-blue);
     border: 1px solid var(--dark-blue);
     background-color: var(--white);
     border-radius: 30px;
     cursor: pointer;
-    padding: 15px;
+    padding: 12px;
 }
 @media (max-width: 768px) {
     #container{

@@ -9,6 +9,7 @@ import { createLogo } from "../modules/logo.mjs";
   const signupContainer = document.createElement("div");
   signupContainer.id = "signup-container";
   signupContainer.className = "signup-container";
+
   const signupForm = document.createElement("form");
   signupForm.id = "signup-form";
   signupForm.className = "signup-form";
@@ -20,7 +21,7 @@ import { createLogo } from "../modules/logo.mjs";
   container.appendChild(signupContainer);
 
   // Function to create form elements
-  function createFormElement(type, id, label) {
+  function createFormElement(type, id, label, placeholder) {
     const div = document.createElement("div");
     div.className = "form";
 
@@ -34,6 +35,7 @@ import { createLogo } from "../modules/logo.mjs";
     input.name = id;
     input.required = true;
     input.className = "form-input";
+    input.placeholder = placeholder;
 
     div.appendChild(labelElement);
     div.appendChild(input);
@@ -41,9 +43,9 @@ import { createLogo } from "../modules/logo.mjs";
   }
 
   
-  createFormElement("text", "name", "Name *");
-  createFormElement("email", "email", "Email *");
-  createFormElement("password", "password", "Password *");
+  createFormElement("text", "name", "Name *", 'Enter your name');
+  createFormElement("email", "email", "Email *", 'example:name@stud.noroff.no');
+  createFormElement("password", "password", "Password *", 'Your password should be 8 character');
 
   const submitButton = document.createElement("button");
   submitButton.classList.add("btn", "signup-btn");
