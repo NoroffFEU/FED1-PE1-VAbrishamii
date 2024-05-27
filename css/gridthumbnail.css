@@ -78,6 +78,9 @@
     .grid-item{
         justify-self: center;
     }
+    .grid-item img{
+        height: 200px;
+    }
 
     
 }
