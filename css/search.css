@@ -16,7 +16,7 @@
 .search-container i{
     position: absolute;
     font-size: 2rem;
-    margin-left: 300px;
+    /* margin-left: 300px; */
     
 }
 .search-container input ::placeholder{
@@ -53,8 +53,8 @@
     #filter{
         margin-left: 10rem;
     }
-    .search-container i{
+    /* .search-container i{
         margin-left: 400px;
-    }
+    } */
     
 }
