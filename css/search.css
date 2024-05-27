@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 50%;
     position: relative;
    
 }
@@ -16,7 +16,7 @@
 .search-container i{
     position: absolute;
     font-size: 1.3rem;
-    margin-left: 450px;
+
     
 }
 .search-container input ::placeholder{
@@ -53,8 +53,6 @@
     #filter{
         margin-left: 10rem;
     }
-    /* .search-container i{
-        margin-left: 400px;
-    } */
+
     
 }
