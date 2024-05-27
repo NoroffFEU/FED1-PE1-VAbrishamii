@@ -15,8 +15,8 @@
 }
 .search-container i{
     position: absolute;
-    font-size: 2rem;
-    margin-left: 250px;
+    font-size: 1.3rem;
+    margin-left: 300px;
     
 }
 .search-container input ::placeholder{
