@@ -8,8 +8,6 @@
 }
 .search-container input{
     width:50%;
-    /* display: flex;  */
-    /* justify-content: center; */
     padding: 20px;
     border: 2px solid var(--dark-blue);
     border-radius: 30px;
@@ -18,7 +16,7 @@
 .search-container i{
     position: absolute;
     font-size: 2rem;
-    margin-left: 400px;
+    margin-left: 300px;
     
 }
 .search-container input ::placeholder{
