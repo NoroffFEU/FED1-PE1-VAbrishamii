@@ -16,7 +16,7 @@
 .search-container i{
     position: absolute;
     font-size: 2rem;
-    /* margin-left: 300px; */
+    margin-left: 100px;
     
 }
 .search-container input ::placeholder{
