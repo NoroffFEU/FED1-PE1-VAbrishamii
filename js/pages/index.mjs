@@ -5,6 +5,7 @@ import { createNavbar } from "./navbar.mjs";
 import { displayPagination } from "../modules/pagination.mjs";
 import { filterIcon } from "../modules/filter.mjs";
 import { pageLoading, removeLoader } from "../modules/loader.mjs";
+import { createSearchInput } from "../modules/search.mjs";
 
 
 //carousel elements
@@ -35,7 +36,7 @@ const postsPerPage = 12;
 let totalPosts = 0; 
 
 
-export async function displayPostGrid(pageNumber = 1, postsData, filter) {
+export async function displayPostGrid(pageNumber = 1, postsData, filter,searchTerm) {
     if (!postsData) {
         postsData = await allPost();
     }
@@ -46,6 +47,10 @@ export async function displayPostGrid(pageNumber = 1, postsData, filter) {
     if (filter && filter !== 'All') {
         posts = posts.filter(post => post.tags.includes(filter));
     }
+    if (searchTerm) {
+        posts = posts.filter(post => post.title.toLowerCase().includes(searchTerm.toLowerCase()));
+    }
+
 
     totalPosts = posts.length; 
 
@@ -99,10 +104,12 @@ async function makePage() {
     pageLoading();
     createCarousel();
     filterIcon();
+    createSearchInput();
     createPostGrid();
     displayPostGrid(1); 
     createFooter();
-    setTimeout (removeLoader,200) 
+    setTimeout (removeLoader,200);
+
 }
 
 makePage();

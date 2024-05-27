@@ -6,6 +6,9 @@ import { allPost } from "./allpost.mjs";
 export function filterIcon() {
     const main = document.querySelector('main');
 
+    const filterDiv = document.createElement('div');
+    filterDiv.id = 'filter';
+
     const filterContainer = document.createElement('div');
     filterContainer.classList.add('filter-container');
 
@@ -32,7 +35,8 @@ export function filterIcon() {
     filterDropdown.appendChild(filterList);
     filterContainer.appendChild(filterIcon);
     filterContainer.appendChild(filterDropdown);
-    main.appendChild(filterContainer);
+    filterDiv.appendChild(filterContainer);
+    main.appendChild(filterDiv);
 }
 
 
