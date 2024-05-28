@@ -4,9 +4,9 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     padding: 20px;
-    width: 90%;
+    width: 85%;
     margin: 0 auto;
-    margin-top: 6rem;
+    margin-top: 4rem;
 }
 .grid-item {
     display: flex;

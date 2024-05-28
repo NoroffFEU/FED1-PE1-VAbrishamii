@@ -33,7 +33,8 @@ export async function displaySinglePost(postName, postId) {
             <img src="${postData.media.url}" alt="${postData.title}">
             <p id="postBody"></p>
             <p>Author: ${postData.author.name}</p>
-            <i class="fa-solid fa-share share"></i>
+            <p>Published Date: ${postData.created}</p>
+            <i class="fa-solid fa-share-nodes share"></i>
            <div>
         `;
         singlePostContent.innerHTML = postContent;

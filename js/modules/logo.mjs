@@ -5,6 +5,10 @@ function createLogo(src, alt, className) {
     if (className) {
         logo.classList.add(className);
     }
+
+    logo.addEventListener('click', () => {
+        window.location.href = '../index.html'; 
+    });
     return logo;
 }
 export {createLogo}
