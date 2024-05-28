@@ -9,7 +9,6 @@ createNavbar('container');
 
 export function editPostPage() {
     const renderPosts = (posts, containerId) => {
-        console.log('post', posts);
         const container = document.getElementById(containerId);
 
         if (!Array.isArray(posts.data)) {
@@ -30,16 +29,12 @@ export function editPostPage() {
             title.textContent = post.title;
             title.id = 'title';
 
-            // const iconContainer = document.createElement('div');
-            // iconContainer.classList.add('icon-container');
-
             const editIcon = document.createElement('i');
             editIcon.className = 'fa-regular fa-pen-to-square';
 
             editIcon.addEventListener('click', ()=>{
                 const postId = post.id;
-                const postName = post.author.name;
-                console.log(`Navigating to update page for post id: ${postId} and name: ${postName}`); 
+                const postName = post.author.name; 
                 window.location.href = `../post/update.html?id=${postId}&name=${postName}`;
             });
 

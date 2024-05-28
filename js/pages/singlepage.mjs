@@ -16,7 +16,6 @@ async function makePage(){
 export async function displaySinglePost(postName, postId) {
     try {
         const post = await singlePost(postName, postId);
-        console.log('post', post);
 
         if (!post || !post.data) {
             throw new Error('Invalid post data');
@@ -47,13 +46,14 @@ export async function displaySinglePost(postName, postId) {
             const postUrl = window.location.href;
             try {
                 await navigator.share({ url: postUrl });
-                console.log('Post shared successfully');
             } catch (error) {
                 console.error('Error sharing post:', error);
+        
             }
         });
     } catch (error) {
-        console.error('Error displaying single post:', error);
+        console.error('Error sharing post:', error);
+     
     }
 
 }
@@ -62,23 +62,17 @@ export async function displaySinglePost(postName, postId) {
 export async function displayPostFromUrlParams() {
         try {
             const params = new URLSearchParams(window.location.search);
-            console.log('URL Params:', params.toString());
-    
             const postId = params.get('id');
-            console.log('postid', postId)
             const postName = params.get('name');
-            console.log('postname', postName)
     
             if (!postId || !postName) {
                 throw new Error('Post ID or name missing from URL parameters');
             }
     
-            console.log(`Post ID from URL: ${postId}`);
-            console.log(`Post name from URL: ${postName}`);
-    
             await displaySinglePost(postName, postId);
         } catch (error) {
             console.error('Error displaying post from URL parameters:', error);
+        
         }
     }
     

@@ -22,10 +22,7 @@ export async function loginUser(email, password) {
     };
 
     try {
-        console.log("Fetching URL:", url);
-        console.log("Options:", options);
         const response = await fetch(url, options);
-        console.log("Response:", response);
 
         if (!response.ok) {
             console.log("Login failed:", response.status);
@@ -33,24 +30,18 @@ export async function loginUser(email, password) {
         }
 
         const responseData = await response.json();
-        console.log("Response Data:", responseData);
-
         localStorage.setItem('userInfo',JSON.stringify((responseData)));
 
         const token = responseData.data.accessToken;
         if (!token) {
-            console.log("Login failed: Access token not found in response");
             throw new Error('Access token not found in response');
         }
 
         const userName = responseData.data.name;
         localStorage.setItem('userName', userName);
-
-        console.log("Login successful. Access token:", token);
         return token;
 
     } catch (error) {
-        console.error("Error:", error);
         throw new Error('Login failed');
     }
 }
@@ -77,12 +68,8 @@ loginForm.addEventListener('submit', async function (event) {
 
     try {
         const token = await loginUser(username, password);
-        console.log('Username:', username);
-        console.log('Password:', password);
         localStorage.setItem('token', token);
-        console.log(token);
-
-
+     
         const isAdmin = checkIfAdmin(username,password);
 
         if (isAdmin){
@@ -94,15 +81,9 @@ loginForm.addEventListener('submit', async function (event) {
     } catch (error) {
         alert('Invalid usernam and password! Please try again.');
     }
-
-    console.log('Username:', username);
-    console.log('Password:', password);
 });
 
 
-
-
-//Append logo and login form to the container
 const container = document.getElementById('container');
 container.appendChild(loginForm);
 

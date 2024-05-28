@@ -9,7 +9,6 @@ export async function checkLoggedIn () {
  export async function getLoggedInName () {
     const token = localStorage.getItem("token");
     if (!token) {  
-         console.log('the user is not login');
          return null; 
         }
      
@@ -26,7 +25,6 @@ export async function checkLoggedIn () {
       const response = await fetch(url,options);
       if (response.ok) {
         const userData = await response.json();
-        console.log(userData.name)
         return userData.name; 
       
       } else {

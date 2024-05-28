@@ -1,7 +1,3 @@
-// export function pageLoading() {
-//     const spinner = document.getElementById('loading');
-//     spinner.classList.add('loaded');
-//   }
 export function pageLoading() {
     const body = document.querySelector('body');
 

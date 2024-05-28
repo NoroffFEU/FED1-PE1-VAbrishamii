@@ -1,5 +1,5 @@
 import { Base_URL, Blog_endpoint } from "./api.mjs";
-import { singlePost } from "./singlepost.mjs";
+
 
 export async function deletePost(name, id) {
    
@@ -21,7 +21,6 @@ export async function deletePost(name, id) {
         window.location.reload();
         return 
     } catch (error) {
-        console.error('Error deleting post:', error);
         throw error;
     }
 }

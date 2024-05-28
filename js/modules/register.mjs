@@ -50,10 +50,7 @@ signupForm.addEventListener('submit', async function(event){
             body: JSON.stringify(registerData)    
         };
         try {
-            console.log(url);
-            console.log(options);
             const response = await fetch(url,options);
-            console.log(response);
 
         if (!response.ok) {
             if (response.status === 400) {
@@ -66,7 +63,6 @@ signupForm.addEventListener('submit', async function(event){
         }
         
         const responseData = await response.json();
-        console.log("Response Data:", responseData);
         alert('Register successfully');
         window.location.href = './login.html'
     } catch (error) {

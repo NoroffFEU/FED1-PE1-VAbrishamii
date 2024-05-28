@@ -48,8 +48,7 @@ function toggleFilterMenu() {
 export async function filterPosts(filter) {
     const name = 'Vahideh';
     const url = `${Base_URL}${Blog_endpoint.POST_BY_USER(name)}?_tag=${filter}`;
-    console.log('filter url', url);
-
+  
     try {
         let postsData;
         if (filter === 'All') {
@@ -59,12 +58,8 @@ export async function filterPosts(filter) {
             postsData = await response.json();
         }
 
-        console.log('filter postdata', postsData);
-
         if (postsData.data && Array.isArray(postsData.data)) {
-            displayPostGrid(1, postsData, filter); // Pass filter to displayPostGrid
-        } else {
-            console.log('No posts found with the specified tag');
+            displayPostGrid(1, postsData, filter); 
         }
 
     } catch (error) {

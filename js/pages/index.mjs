@@ -40,7 +40,6 @@ export async function displayPostGrid(pageNumber = 1, postsData, filter,searchTe
     if (!postsData) {
         postsData = await allPost();
     }
-    console.log(`Fetched posts:`, postsData);
 
     let posts = postsData.data;
 
@@ -108,7 +107,7 @@ async function makePage() {
     createPostGrid();
     displayPostGrid(1); 
     createFooter();
-    setTimeout (removeLoader,200);
+    setTimeout (removeLoader,300);
 
 }
 
@@ -117,176 +116,9 @@ makePage();
 
 
 
-// export async function displayPostGrid(pageNumber = 1, postsData) {
-//     if (!postsData) {
-//         postsData = await allPost();
-//     }
-//     console.log(`Fetched posts:`, postsData);
-
-//     const startIndex = (pageNumber - 1) * postsPerPage;
-//     const endIndex = pageNumber * postsPerPage;
-//     const posts = postsData.data.slice(startIndex, endIndex);
-
-//     const postGrid = document.getElementById('postGrid');
-//     postGrid.innerHTML = ''; 
-
-//     if (!postsData || !postsData.data || !Array.isArray(postsData.data) || postsData.data.length === 0) {
-//         postGrid.innerHTML = '<p>No posts available</p>';
-//         return;
-//     }
-
-//     posts.forEach(post => {
-//         const postElement = document.createElement('div');
-//         postElement.classList.add('grid-item');
-//         postElement.innerHTML = `
-//             <img src="${post.media.url}" alt="${post.title}">
-//             <h3>${post.title}</h3>
-//         `;
-//         postElement.addEventListener('click', () => {
-//             window.location.href = `detailspost.html?id=${post.id}&name=${post.author.name}`;
-//         });
-//         postGrid.appendChild(postElement);
-//     });
-
-//     if (!postsData) {
-//         totalPosts = postsData.data.length;
-//         const totalPages = Math.ceil(totalPosts / postsPerPage);
-//         displayPagination(totalPages, pageNumber, displayPostGrid);
-//     }
-// }
-
-// export async function createPostGrid() {
-//     const main = document.querySelector('main');
-
-//     const postGrid = document.createElement('div');
-//     postGrid.id = 'postGrid';
-//     postGrid.classList.add('thumbnail');
-//     main.appendChild(postGrid);
-
-//     const paginationContainer = document.createElement('div');
-//     paginationContainer.id = 'pagination';
-//     main.appendChild(paginationContainer);
-
-//     await displayPostGrid(1);
-// }
-
-
-// export async function displayPostGrid(pageNumber = 1, postData) {
-//     const postsData = await allPost();
-//     console.log(`Fetched posts:`, postsData);
-
-//     totalPosts = postsData.data.length;
-
-//     const startIndex = (pageNumber - 1) * postsPerPage;
-//     const endIndex = pageNumber * postsPerPage;
-//     const posts = postsData.data.slice(startIndex, endIndex);
-
-//     const postGrid = document.getElementById('postGrid');
-//     postGrid.innerHTML = ''; 
-
-//     if (posts.length === 0) {
-//         postGrid.innerHTML = '<p>No posts available</p>';
-//         return;
-//     }
-
-//     posts.forEach(post => {
-//         const postElement = document.createElement('div');
-//         postElement.classList.add('grid-item');
-//         postElement.innerHTML = `
-//             <img src="${post.media.url}" alt="${post.title}">
-//             <h3>${post.title}</h3>
-//         `;
-//         postElement.addEventListener('click', () => {
-//             window.location.href = `detailspost.html?id=${post.id}&name=${post.author.name}`;
-//         });
-//         postGrid.appendChild(postElement);
-//     });
-
-//     const totalPages = Math.ceil(totalPosts / postsPerPage);
-//     displayPagination(totalPages, pageNumber, displayPostGrid);
-// }
-
-
-
-// export function createPostGrid() {
-//     const main = document.querySelector('main');
-
-//     const postGrid = document.createElement('div');
-//     postGrid.id = 'postGrid';
-//     postGrid.classList.add('thumbnail');
-//     main.appendChild(postGrid);
-
-//     const paginationContainer = document.createElement('div');
-//     paginationContainer.id = 'pagination';
-//     main.appendChild(paginationContainer);
-// }
 
 
 
 
-// async function fetchPosts(sortBy, sortOrder) {
-//     const postsData = await allPost(sortBy, sortOrder);
-//     return postsData.data;
-// }
-
-// // Function to display blog posts
-// export async function displayPostGrid(pageNumber = 1, sortBy = 'createdAt', sortOrder = 'desc') {
-//     try {
-//         const posts = await fetchPosts(sortBy, sortOrder);
-//         const postsPerPage = 12;
-//         const startIndex = (pageNumber - 1) * postsPerPage;
-//         const endIndex = pageNumber * postsPerPage;
-//         const postsToDisplay = posts.slice(startIndex, endIndex);
-
-//         const postGrid = document.getElementById('postGrid');
-//         postGrid.innerHTML = '';
-
-//         if (postsToDisplay.length === 0) {
-//             postGrid.innerHTML = '<p>No posts available</p>';
-//             return;
-//         }
-
-//         postsToDisplay.forEach(post => {
-//             const postElement = document.createElement('div');
-//             postElement.classList.add('grid-item');
-//             postElement.innerHTML = `
-//                 <img src="${post.media.url}" alt="${post.title}">
-//                 <h3>${post.title}</h3>
-//             `;
-//             postElement.addEventListener('click', () => {
-//                 window.location.href = `detailspost.html?id=${post.id}&name=${post.author.name}`;
-//             });
-//             postGrid.appendChild(postElement);
-//         });
-
-//         const totalPages = Math.ceil(posts.length / postsPerPage);
-//         displayPagination(totalPages, pageNumber, (pageNum) => displayPostGrid(pageNum, sortBy, sortOrder));
-//     } catch (error) {
-//         console.error('Error fetching or displaying posts:', error);
-//     }
-// }
-
-// export function createPostGrid() {
-//     const main = document.querySelector('main');
-
-//     const postGrid = document.createElement('div');
-//     postGrid.id = 'postGrid';
-//     postGrid.classList.add('thumbnail');
-//     main.appendChild(postGrid);
-
-//     const paginationContainer = document.createElement('div');
-//     paginationContainer.id = 'pagination';
-//     main.appendChild(paginationContainer);
-// }
-
-// async function makePage() {
-//     createNavbar('container');
-//     createCarousel();
-//     createPostGrid();
-//     await displayPostGrid(1); 
-//     createFooter();
-//     initializeSortDropdown(); 
-// }
-// makePage();
 
 

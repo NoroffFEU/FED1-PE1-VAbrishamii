@@ -13,7 +13,6 @@ async function main() {
     createForm(postName,postId);
     createFooter();
     
-   
 }
 
 
@@ -24,12 +23,10 @@ export async function updatePost(name,id, title,imageURL,body){
         media: {url:imageURL },
         body: body,
     };
-    console.log('formdata', formData);
 
     try{
         const accessToken = localStorage.getItem("token");
         const updateUrl = `${Base_URL}${Blog_endpoint.POST_BY_ID(name, id)}`;
-        console.log('updateurl', updateUrl);
         const response = await fetch (updateUrl,{
             method: 'PUT',
             headers:{
@@ -40,7 +37,7 @@ export async function updatePost(name,id, title,imageURL,body){
 
 
         });
-        console.log('response', response);
+   
         if (!response.ok){
             throw new Error ('Failed to update post');
         }
@@ -49,7 +46,6 @@ export async function updatePost(name,id, title,imageURL,body){
         window.location.href = `../post/edit.html?id=${id}&name=${name}`;
 
     }catch(error){
-        console.log('Error updating post:', error);
         alert('Failed to update post. Please try again.');
     }
 }

@@ -4,45 +4,36 @@ import { createLogo } from "../modules/logo.mjs";
 export function createNavbar(containerId){
   const container = document.getElementById(containerId);
 
+  const mainContent = document.createElement("div");
+  mainContent.classList.add("header");
 
-const mainContent = document.createElement("div");
-mainContent.classList.add("header");
-
-const logo = createLogo("../asset/images/logo.png", "Trip", "logo");
-mainContent.appendChild(logo);
-
-
-// Create the icons
-const iconDiv = document.createElement("div");
-iconDiv.classList.add("icon");
-
-const iconList = document.createElement("ul");
-iconList.classList.add("icon-item");
+  const logo = createLogo("../asset/images/logo.png", "Trip", "logo");
+  mainContent.appendChild(logo);
 
 
-const homeIcon = document.createElement("li");
-const homeIconContent = document.createElement("i");
-homeIconContent.classList.add("fa-solid", "fa-house");
-homeIcon.appendChild(homeIconContent);
+  // Create the icons
+  const iconDiv = document.createElement("div");
+  iconDiv.classList.add("icon");
 
-const userIcon = document.createElement("li");
-const userIconContent = document.createElement("i");
-userIconContent.classList.add("fa-solid", "fa-user");
-userIcon.appendChild(userIconContent);
-
-// const searchIcon = document.createElement("li");
-// const searchIconContent = document.createElement("i");
-// searchIconContent.classList.add("fa-solid" , "fa-magnifying-glass");
-// searchIcon.appendChild(searchIconContent);
-
-homeIcon.appendChild(homeIconContent);
-userIcon.appendChild(userIconContent);
-// searchIcon.appendChild(searchIconContent);
+  const iconList = document.createElement("ul");
+  iconList.classList.add("icon-item");
 
 
-iconList.appendChild(homeIcon);
-iconList.appendChild(userIcon);
-// iconList.appendChild(searchIcon);
+  const homeIcon = document.createElement("li");
+  const homeIconContent = document.createElement("i");
+  homeIconContent.classList.add("fa-solid", "fa-house");
+  homeIcon.appendChild(homeIconContent);
+
+  const userIcon = document.createElement("li");
+  const userIconContent = document.createElement("i");
+  userIconContent.classList.add("fa-solid", "fa-user");
+  userIcon.appendChild(userIconContent);
+
+  homeIcon.appendChild(homeIconContent);
+  userIcon.appendChild(userIconContent);
+
+  iconList.appendChild(homeIcon);
+  iconList.appendChild(userIcon);
 
 if (isAdmin()) {
   const editIcon = document.createElement('li');
@@ -65,8 +56,6 @@ if (isAdmin()) {
     window.location.href = "../post/index.html";
   })
 }
-
-
 
 iconDiv.appendChild(iconList);
 mainContent.appendChild(iconDiv);
@@ -95,8 +84,6 @@ if (userName) {
 }
 
 
-// userIcon.addEventListener("click", LoginPage);
-
 
 homeIcon.addEventListener('click', function() {
   window.location.href = '../index.html';
@@ -107,6 +94,6 @@ function isAdmin() {
 }
 
 
+
+
 }
-
-

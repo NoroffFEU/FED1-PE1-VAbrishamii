@@ -10,6 +10,7 @@
 .logo{
     width: 7.3vw;
     margin: 2rem;
+    cursor: pointer;
 }
 .add-icon{
     border: 3px solid var(--black);

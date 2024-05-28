@@ -15,13 +15,10 @@ const createBlogForm = () => {
     const accessToken = localStorage.getItem("token");
     const userInfo = JSON.parse(userInfoString);
     const name = userInfo ? userInfo.data.name : null;
-    console.log('name', name);
-    console.log('accessToken' , accessToken);
 
     //create form
     const form = document.createElement("form");
     form.className = "blog-form";
-  
   
     const titleLabel = document.createElement("label");
     titleLabel.innerText = "Title:";
@@ -50,8 +47,7 @@ const createBlogForm = () => {
     tagsInput.id = "tags";
     tagsInput.name = "tags";
     tagsInput.placeholder = "Enter tags separated by commas";
-  
-    // Create submit button
+
     const buttonsContainer = document.createElement("div");
     buttonsContainer.className = 'buttonDiv';
     const submitButton = document.createElement("button");
@@ -63,7 +59,6 @@ const createBlogForm = () => {
     cancleButton.classList.add('btn');
     cancleButton.type = "reset";
     cancleButton.innerText = "Decline";
-  
 
     form.append(titleLabel, titleInput,  imageLabel, imageInput, textLabel, textInput,tagsLabel, tagsInput, buttonsContainer);
     buttonsContainer.appendChild(submitButton);
@@ -73,21 +68,15 @@ const createBlogForm = () => {
     // Add submit event listener to form
     const createBlogPost = async (event) => { 
       event.preventDefault();
-  
-      
       const title = titleInput.value;
       const text = textInput.value;
       const image = imageInput.value;
-      const tags = tagsInput.value.split(',').map(tag => tag.trim()); // Split tags by commas and trim whitespace
+      const tags = tagsInput.value.split(',').map(tag => tag.trim()); 
 
-  
-      // Check if any field is empty
       if (!title || !text || !image || !tags) {
         alert('Please fill in all fields.');
         return;
       }
-
-   
 
     try{
 
@@ -116,7 +105,7 @@ const createBlogForm = () => {
       },
       body: JSON.stringify(postData)
     };
-    // check user information is available
+    
     if (!userInfo) {
       alert('Please log in to publish a blog post.');
      return;
@@ -128,21 +117,15 @@ const createBlogForm = () => {
       console.log('response', blogPostResponse);
       if (blogPostResponse.ok) {
         displayPreview(postData, name);
-        console.log('postdata',postData);
-
-        // alert('Blog post created successfully!');
-
      
         titleInput.value = '';
         textInput.value = '';
         imageInput.value = '';
         tagsInput.value = '';
       } else {
-        
         alert('Failed to create blog post. Please try again later.');
       }
     } catch (error) {
-      console.error('Error:', error);
       alert('An error occurred while processing your request. Please try again later.');
     }
   };
@@ -154,9 +137,8 @@ const createBlogForm = () => {
     textInput.value = '';
     imageInput.value = '';
     tagsInput.value = '';
+    window.location.href = '../post/edit.html';
   })
-
-
  
   main.appendChild(form);
   return form;

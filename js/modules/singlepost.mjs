@@ -11,10 +11,8 @@ export async function singlePost(name,id){
 
         }
         const post = await response.json();
-        console.log('post', post);
         return post;
     }catch (error){
-        console.log('error fetching post', error);
         throw error;
     }
 }

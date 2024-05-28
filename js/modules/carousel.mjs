@@ -57,10 +57,7 @@ async function fetchLatestPosts() {
         }
 
         const responseData = await response.json();
-        console.log('reposnse', responseData);
-
         const posts = responseData.data || responseData;
-        console.log('post', posts);
 
         posts.sort((a, b) => {
             const dateA = new Date(a.date);
@@ -101,10 +98,7 @@ function updateCarousel() {
     readMoreLink.addEventListener('click', async (event) => {
         event.preventDefault();
         const postId = post.id;
-        console.log('postid', postId);
-
         const postName = post.author.name;
-        console.log('postname', postName);
         window.location.href = `detailspost.html?id=${postId}&name=${postName}`;
     });
 }
