@@ -1,3 +1,5 @@
 # FED1 Project Exam 1
 
-Use this file to describe your project.
+Admin username: vabri2023@stud.noroff.no
+
+password: Avnoroff23
