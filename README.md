@@ -1,7 +1,7 @@
 # FED1 Project Exam 1
 ![Trip Guide](https://github.com/NoroffFEU/FED1-PE1-VAbrishamii/blob/main/Screenshot%202024-05-30%20105840.png)
 
-[Visit Trip](splendorous-sundae-6d65a8.netlify.app)
+[Visit Trip](https://splendorous-sundae-6d65a8.netlify.app)
 
 ## Description
 The objective of this project is to develop a comprehensive blogging platform catering to users interested in exploring various places, cultures, and nature around the world. The platform will consist of two main components: an Admin page and a User page. The Admin page will allow the client to manage blog posts by adding, editing, or deleting content, while the User page will enable visitors to view blog posts, share them with others, and register on the website.
