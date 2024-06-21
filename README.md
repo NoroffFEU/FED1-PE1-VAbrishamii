@@ -24,13 +24,17 @@ The primary aim of this project is to consolidate and demonstrate the skills acq
 ## Getting Started
 1. Clone the Repo:
   ```sh
-   (https://github.com/NoroffFEU/FED1-PE1-VAbrishamii.git)
+ git clone  https://github.com/NoroffFEU/FED1-PE1-VAbrishamii.git
 
   ```
 2. Install the dependencies:  
   ```sh
    npm install
   ```
+Or
+
+Open with VSCode's Live Server on port 5000
+
 ## Running 
 To run the app, run the following commands:
   ```sh
