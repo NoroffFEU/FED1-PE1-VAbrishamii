@@ -31,15 +31,18 @@ The primary aim of this project is to consolidate and demonstrate the skills acq
   ```sh
    npm install
   ```
-Or
-
-Open with VSCode's Live Server on port 5000
 
 ## Running 
 To run the app, run the following commands:
+
+Open with VSCode's Live Server on port 5000
+
+Or
+
   ```sh
   npm run start
   ```
+
 ## Contact 
 
 Feel free to contact me:
